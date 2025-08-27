@@ -5,16 +5,15 @@ import './App.css';
 import Navbar from './assets/components/Navbar';
 import AboutMe from './assets/components/AboutMe';
 import Projects from './assets/components/Projects';
-import Contacts from './assets/components/Contactos';
 
 function App() {
   return (
-    <div className="bg-gray-200">   
+    <>    
+    <h1 className='text-yellow-500'>Hello, mundo!</h1>
       <Navbar />
       <AboutMe />
       <Projects />
-      <Contacts />
-    </div>
+    </>
   );
 }
 
