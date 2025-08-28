@@ -12,12 +12,12 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
   return (
     <nav
       id="navbar"
-      className="w-full bg-blue-500 dark:bg-gray-900 shadow-md fixed top-0 z-50 rounded-b-lg"
+      className="text-blue-900 w-full bg-blue-500 dark:bg-gray-900 shadow-md fixed top-0 z-50 rounded-b-lg text-2xl p-5"
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
         {/* Logo ou Título */}
-        <div className="text-white text-2xl font-bold">
-          Meu Portfólio
+        <div className="text-gray-500 text-2xl font-bold">
+          
         </div>
 
         {/* Ícone de menu e de modo escuro para dispositivos móveis */}
@@ -31,22 +31,22 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
         </div>
 
         {/* Links de navegação e botão de modo escuro para telas grandes */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8 ">
           <a
             href="sobre"
-            className="text-gray-800 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition rounded-md px-3 py-2"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-700 transition rounded-md bg-gray-200 px-3 py-2"
           >
             Sobre mim
           </a>
           <a
             href="#projetos"
-            className="text-gray-800 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition rounded-md px-3 py-2"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition bg-gray-200 rounded-md px-3 py-2"
           >
             Projetos
           </a>
           <a
             href="#contato"
-            className="text-gray-800 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition rounded-md px-3 py-2"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition bg-gray-200 rounded-md px-3 py-2"
           >
             Contatos
           </a>
@@ -58,10 +58,10 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
         {/* Ícone do WhatsApp */}
         <div className="flex items-center">
           <a
-            href="https://wa.me/5511999999999"
+            href="https://wa.me/5521977496651"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-600 hover:text-green-700 transition text-2xl"
+           className="bg-[#25D366] text-white hover:bg-[#1DA851] transition text-2xl h-8 w-8 rounded-full flex items-center justify-center"
           >
             <FaWhatsapp />
           </a>

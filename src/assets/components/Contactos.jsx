@@ -12,9 +12,7 @@ export default function Contactos() {
           Contatos
         </h2>
         
-        <p className="mb-8 max-w-2xl mx-auto text-lg">
-          Fique à vontade para entrar em contato. Estou sempre aberto a novas oportunidades e parcerias!
-        </p>
+
 
         <div className="flex justify-center space-x-6 text-4xl">
           {/* Link para o LinkedIn */}
