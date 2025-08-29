@@ -9,8 +9,7 @@ export default function AboutMe() {
                  hover:-translate-y-1 hover:rotate-1
                  group cursor-pointer"
     >
-      <div
-        id="sobre"
+     <div
         className="max-w-4xl mx-auto px-6 py-16 md:py-20 mt-20 flex flex-col items-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-center">
           Sobre mim
@@ -20,24 +19,18 @@ export default function AboutMe() {
         <img
           src="/imagens/para_port5.png" // Caminho CORRETO para a pasta public
           alt="Foto de Flávio"
-          className="w-40 h-40 object-cover rounded-full shadow-lg mb-8 border-4 border-white dark:border-gray-800"
+          className="w-80 h-60 object-cover rounded-full shadow-lg mb-8 border-4 border-white dark:border-gray-800"
         />
 
-        <p className="text-lg leading-relaxed mb-4 text-left">
-          Comecei minha jornada na tecnologia aos 25 anos, quase sem perceber que
-          aquele hobby para ajudar em projetos de contabilidade mudaria
-          completamente minha trajetória.
+        {/* Novo texto da seção "Sobre mim" */}
+        <p className="text-lg leading-relaxed mb-4 text-center px-4">
+          Oieee, prazer em conhecê-lo! Muito bom ter você por aqui. Me chamo <strong ClassName= "font-sans">Flávio Antônio</strong>, sou natural do Rio de Janeiro. Comecei muito cedo no mundo da tecnologia. Como um curioso entusiasmado que precisava conhecer sobre o funcionamento de todos os software e hardware (ainda sou rs).
         </p>
-
-        <p className="text-lg leading-relaxed mb-4 text-left">
-          Descobri no front-end uma paixão genuína por criar, transformar e dar
-          vida a ideias.
+        <p className="text-lg leading-relaxed mb-4 text-center px-4">
+          Associei minha paixão por tecnologia à minha antiga função como técnico contábil criando sites e aplicações web para otimizar meu desempenho profissional. E nos últimos dois anos, decidi fazer uma migração de carreira para que o desenvolvimento web deixasse de ser somente um hobby para se tornar 1ª profissão.
         </p>
-
-        <p className="text-lg leading-relaxed text-left">
-          Há 2 anos atuo como desenvolvedor, focado em apoiar pequenos e médios
-          empreendedores a terem mais presença na internet e a escalarem seus
-          negócios com soluções criativas e acessíveis.
+        <p className="text-lg leading-relaxed text-center px-4">
+          Atualmente trabalho como freelancer desenvolvendo aplicações para empreendedores e parceiros no mundo da tecnologia. E aí? Vamos seguir juntos nessa trajetória😉?
         </p>
       </div>
     </section>

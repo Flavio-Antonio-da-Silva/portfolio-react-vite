@@ -33,7 +33,7 @@ function App() {
     <div className="bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen p-4">
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <main className="pt-20">
-        <h1 className="text-4xl text-center font-bold mb-8">Bem-vindo ao Meu Portfólio</h1>
+        <h1 className="text-4xl text-center font-bold mb-8  ">Dev Front-end: Flávio Antônio!</h1>
         <AboutMe />
         <Projects />
         <Skills />

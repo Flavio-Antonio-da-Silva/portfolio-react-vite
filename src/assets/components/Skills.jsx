@@ -1,6 +1,24 @@
 import React from "react";
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaFigma } from 'react-icons/fa';
+import { IoLogoJavascript } from 'react-icons/io';
+import { SiTypescript, SiVite, SiTailwindcss, SiVercel } from 'react-icons/si';
 
 export default function Skills() {
+  const skills = [
+    { name: "HTML5", icon: <FaHtml5 className="text-5xl" /> },
+    { name: "CSS3", icon: <FaCss3Alt className="text-5xl" /> },
+    { name: "JavaScript", icon: <IoLogoJavascript className="text-5xl" /> },
+    { name: "React", icon: <FaReact className="text-5xl" /> },
+    { name: "Node.js", icon: <FaNodeJs className="text-5xl" /> },
+    { name: "Git", icon: <FaGitAlt className="text-5xl" /> },
+    { name: "TypeScript", icon: <SiTypescript className="text-5xl" /> },
+    { name: "Vite", icon: <SiVite className="text-5xl" /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-5xl" /> },
+    { name: "Vercel", icon: <SiVercel className="text-5xl" /> },
+    { name: "Github", icon: <FaGithub className="text-5xl" /> },
+    { name: "Figma", icon: <FaFigma className="text-5xl" /> }
+  ];
+
   return (
     <section 
       id="habilidades" 
@@ -14,30 +32,18 @@ export default function Skills() {
           Minhas Habilidades
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "React",
-            "Node.js",
-            "Git",
-            "TypeScript",
-            "Vite",
-            "Tailwind CSS",
-            "Vercel",
-            "Github",
-            "Figma" 
-          ].map((skill, index) => (
+          {skills.map((skill, index) => (
             <div
               key={index}
               className="relative p-6 rounded-lg shadow-md 
                          bg-gradient-to-r from-indigo-500 to-purple-700 text-white // Gradiente para cada item
                          transform transition-all duration-300 ease-out 
                          hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 // Sombra e escala no hover
-                         flex items-center justify-center text-center
+                         flex flex-col items-center justify-center text-center
                          group-hover:rotate-0 group-hover:scale-100" // Resetar rotação e escala no hover do grupo
             >
-              <p className="text-xl font-semibold">{skill}</p>
+              {skill.icon}
+              <p className="text-xl font-semibold mt-2">{skill.name}</p>
               {/* Elementos de fundo para o efeito visual, se desejar */}
               <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></div>
             </div>
