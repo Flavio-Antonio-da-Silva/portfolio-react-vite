@@ -31,22 +31,30 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
         </div>
 
         {/* Links de navegação e botão de modo escuro para telas grandes */}
-        <div className="hidden md:flex items-center space-x-8 ">
+        <div
+        id="sobre" 
+        className="hidden md:flex items-center space-x-8 ">
           <a
             href="sobre"
-            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-700 transition rounded-md bg-gray-200 px-3 py-2"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-700 transition-transform transform hover:scale-120 rounded-md bg-gray-200 px-3 py-2"
           >
             Sobre mim
           </a>
           <a
             href="#projetos"
-            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition bg-gray-200 rounded-md px-3 py-2"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-transform transform hover:scale-120 bg-gray-200 rounded-md px-3 py-2"
           >
             Projetos
           </a>
           <a
+            href="#habilidades"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-transform transform hover:scale-120 bg-gray-200 rounded-md px-3 py-2"
+          >
+            Habilidades
+          </a>
+          <a
             href="#contato"
-            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition bg-gray-200 rounded-md px-3 py-2"
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-transform transform hover:scale-120 bg-gray-200 rounded-md px-3 py-2"
           >
             Contatos
           </a>
@@ -56,15 +64,16 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
         </div>
 
         {/* Ícone do WhatsApp */}
-        <div className="flex items-center">
+        <div className="flex flex-col items-center">
           <a
             href="https://wa.me/5521977496651"
             target="_blank"
             rel="noopener noreferrer"
-           className="bg-[#25D366] text-white hover:bg-[#1DA851] transition text-2xl h-8 w-8 rounded-full flex items-center justify-center"
+           className="bg-[#25D366] text-white hover:bg-[#1DA851] transition text-2xl h-8 w-8 rounded-full flex items-center justify-center transition-transform transform hover:scale-120"
           >
             <FaWhatsapp />
-          </a>
+          </a> <p className="text-lg text-white dark:text-gray-300 font- mt-1">Click para contato!</p>
+
         </div>
       </div>
 
@@ -88,6 +97,13 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
             className="w-full text-center text-gray-800 dark:text-gray-200 hover:bg-blue-300 dark:hover:bg-gray-700 py-2 transition"
           >
             Projetos
+          </a>
+          <a
+            href="#habilidades"
+            onClick={toggleMenu}
+            className="w-full text-center text-gray-800 dark:text-gray-200 hover:bg-blue-300 dark:hover:bg-gray-700 py-2 transition"
+          >
+            Habilidades
           </a>
           <a
             href="#contato"
