@@ -9,11 +9,12 @@ import Projects from './assets/components/Projects';
 //Mode dark/light
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [displayText, setDisplayText] = useState('');
+  const fullText = 'Dev Front-end: Flávio Antônio!';
 
+  // Efeito para o modo dark/light
   useEffect(() => {
     const html = document.documentElement;
-     
-    // Adiciona uma transição suave para propriedades de cor e background
     html.style.transition = 'background-color 2.0s ease, color 2.0s ease';
 
     if (isDarkMode) {
@@ -25,15 +26,35 @@ function App() {
     }
   }, [isDarkMode]);
 
+  // Efeito de digitação com setTimeout para maior segurança
+  useEffect(() => {
+    let currentText = '';
+    let i = 0;
+
+    const type = () => {
+      if (i < fullText.length) {
+        currentText += fullText[i];
+        setDisplayText(currentText);
+        i++;
+        setTimeout(type, 180); // Chama a função novamente após 180ms
+      }
+    };
+
+    setTimeout(type, 100); // Inicia o efeito
+  }, []);
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen p-4">
+    <div 
+      className="bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen p-8">
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <main className="pt-20">
-        <h1 className="text-4xl text-center font-bold mb-8  ">Dev Front-end: Flávio Antônio!</h1>
+        <h1 className="text-4xl text-center font-bold mb-8 text-purple-400">
+          {displayText}
+        </h1>
         <AboutMe />
         <Projects />
         <Skills />

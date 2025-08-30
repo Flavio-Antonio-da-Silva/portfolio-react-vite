@@ -2,3 +2,10 @@
   max-width: 100vw;
   margin: auto;
 }
+
+body {
+  background-image: url('./assets/imagens/bg-global.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

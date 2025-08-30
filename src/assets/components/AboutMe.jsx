@@ -17,6 +17,7 @@ export default function AboutMe() {
 
         {/* Imagem do rosto */}
         <img
+          id="foto-rosto"
           src="/imagens/para_port5.png" // Caminho CORRETO para a pasta public
           alt="Foto de Flávio"
           className="w-80 h-60 object-cover rounded-full shadow-lg mb-8 border-4 border-white dark:border-gray-800"
