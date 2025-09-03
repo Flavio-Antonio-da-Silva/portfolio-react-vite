@@ -1,5 +1,6 @@
 // App.jsx
 import React, { useState, useEffect } from 'react';
+import './App.css';
 import Navbar from './assets/components/Navbar';
 import AboutMe from './assets/components/AboutMe';
 import Contactos from './assets/components/Contactos';
@@ -19,10 +20,8 @@ function App() {
 
     if (isDarkMode) {
       html.classList.add("dark");
-      console.log("Modo escuro ativado");
     } else {
-      html.classList.remove("dark");
-      console.log("Modo claro ativado");
+      html.classList.remove("dark");      
     }
   }, [isDarkMode]);
 
@@ -36,7 +35,7 @@ function App() {
         currentText += fullText[i];
         setDisplayText(currentText);
         i++;
-        setTimeout(type, 180); // Chama a função novamente após 180ms
+        setTimeout(type, 140); // Chama a função novamente após 180ms
       }
     };
 
@@ -49,7 +48,7 @@ function App() {
 
   return (
     <div 
-      className="bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen p-8">
+      className=" text-black dark:text-white min-h-screen p-8">
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <main className="pt-20">
         <h1 className="text-4xl text-center font-bold mb-8 text-purple-400">

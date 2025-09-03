@@ -2,8 +2,8 @@ import React from "react";
 
 export default function AboutMe() {
   return (
-    <section
-      className="w-full bg-gradient-to-r from-blue-500 to-blue-900 dark:text-gray-200 rounded-md 
+    <section id="sobre-mim"
+      className="w-full bg-gradient-to-r from-blue-300  dark:text-gray-200 rounded-md 
                  transform transition-all duration-700 ease-out
                  hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25
                  hover:-translate-y-1 hover:rotate-1
@@ -18,9 +18,9 @@ export default function AboutMe() {
         {/* Imagem do rosto */}
         <img
           id="foto-rosto"
-          src="/imagens/para_port5.png" // Caminho CORRETO para a pasta public
+          src="/imagens/para_port6.jpg" // Caminho CORRETO para a pasta public
           alt="Foto de Flávio"
-          className="w-80 h-60 object-cover rounded-full shadow-lg mb-8 border-4 border-white dark:border-gray-800"
+          className="hover:scale-130 duration-700 w-80 h-60 object-cover rounded-full shadow-lg mb-8 border-0 border-white dark:border-gray-800"
         />
 
         {/* Novo texto da seção "Sobre mim" */}

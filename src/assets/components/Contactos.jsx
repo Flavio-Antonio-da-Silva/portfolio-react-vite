@@ -5,7 +5,7 @@ export default function Contactos() {
   return (
     <section 
       id="contato"
-      className="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 py-16"
+      className="w-full bg-gray-900 dark:bg-gray-800 text-blue-500 dark:text-gray-100 py-16"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-10">
@@ -31,7 +31,7 @@ export default function Contactos() {
             href="https://github.com/Flavio-Antonio-da-Silva"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+            className="text-gray-100 hover:text-yellow-500 dark:text-gray-400 dark:hover:text-white transition-colors"
             aria-label="GitHub"
           >
             <FaGithub />

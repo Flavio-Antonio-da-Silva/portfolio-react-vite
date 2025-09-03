@@ -33,11 +33,11 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
           
         </div>
 
-        {/* Ícone de menu e de modo escuro para dispositivos móveis */}
         <div className="flex items-center space-x-4 md:hidden">
           <button onClick={toggleDarkMode} className="text-white text-2xl focus:outline-none">
             {isDarkMode ? <FaSun /> : <FaMoon />}
-          </button>
+         {/* Ícone de menu e de modo escuro para dispositivos móveis */}
+         </button>
           <button onClick={toggleMenu} className="text-white text-2xl focus:outline-none">
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>

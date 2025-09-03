@@ -4,7 +4,7 @@ export default function Projects() {
   return (
     <section
       id="projetos"
-      className="w-full bg-gradient-to-r from-indigo-500 to-purple-700 text-white rounded-md 
+      className="w-full bg-gradient-to-r from-indigo-500  text-white rounded-md 
                  transform transition-all duration-700 ease-out
                  hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25
                  hover:-translate-y-1 hover:rotate-1
