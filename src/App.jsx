@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './assets/components/Navbar';
 import AboutMe from './assets/components/AboutMe';
+import Services from './assets/components/Services';
 import Contactos from './assets/components/Contactos';
 import Skills from './assets/components/Skills';
 import Projects from './assets/components/Projects';
+import Footer from './assets/components/Footer';
 
-//Mode dark/light
+
+//Modo dark/light
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [displayText, setDisplayText] = useState('');
@@ -35,11 +38,11 @@ function App() {
         currentText += fullText[i];
         setDisplayText(currentText);
         i++;
-        setTimeout(type, 140); // Chama a função novamente após 180ms
+        setTimeout(type, 140);
       }
     };
 
-    setTimeout(type, 100); // Inicia o efeito
+    setTimeout(type, 100);
   }, []);
 
   const toggleDarkMode = () => {
@@ -47,18 +50,25 @@ function App() {
   };
 
   return (
-    <div 
-      className=" text-black dark:text-white min-h-screen p-8">
+    <div className="text-indigo-800 dark:text-violet-300 min-h-screen">
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-      <main className="pt-20">
-        <h1 className="text-4xl text-center font-bold mb-8 text-purple-400">
-          {displayText}
-        </h1>
-        <AboutMe />
-        <Projects />
-        <Skills />
-        <Contactos />
-      </main>
+      
+      {/* Contêiner para centralizar o conteúdo com 95vw */}
+      <div className="w-[95vw] mx-auto overflow-hidden">
+        <main className="pt-50 ">
+          <h1 className="text-4xl text-center font-bold mb-8">
+            {displayText}
+          </h1>
+          <AboutMe />
+          <Services />
+          <Projects />
+          <Skills />
+          <Contactos />
+        </main>
+      </div>
+
+      {/* Footer fora do contêiner para ocupar 100vw */}
+      <Footer />
     </div>
   );
 }

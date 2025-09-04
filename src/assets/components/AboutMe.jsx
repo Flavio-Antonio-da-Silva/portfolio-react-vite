@@ -3,11 +3,11 @@ import React from "react";
 export default function AboutMe() {
   return (
     <section id="sobre-mim"
-      className="w-full bg-gradient-to-r from-blue-300  dark:text-gray-200 rounded-md 
-                 transform transition-all duration-700 ease-out
+      className="w-full bg-gradient-to-r from-blue-300  dark:text-gray-900 rounded-md 
+                 transform transition-all duration-900 ease-out
                  hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25
                  hover:-translate-y-1 hover:rotate-1
-                 group cursor-pointer"
+                 group cursor-pointer text-xl "
     >
      <div
         className="max-w-4xl mx-auto px-6 py-16 md:py-20 mt-20 flex flex-col items-center">

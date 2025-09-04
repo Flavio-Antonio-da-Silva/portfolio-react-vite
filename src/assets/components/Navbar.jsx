@@ -54,6 +54,17 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
           >
             Sobre mim
           </a>
+
+          <a
+            href="#servicos"
+            onClick={(e) => handleScrollToSection(e, 'servicos')}
+            className="text-gray-800 dark:text-blue-500 hover:text-indigo-600 px-3 py-2 dark:hover:text-indigo-700 transition-transform transform duration-700 hover:scale-120 rounded-md bg-gray-200"
+          >
+            Serviços
+          </a>
+
+          
+
           <a
             href="#projetos"
             onClick={(e) => handleScrollToSection(e, 'projetos')}
