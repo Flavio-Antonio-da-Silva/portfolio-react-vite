@@ -8,8 +8,8 @@ body {
   background-image: url('../public/imagens/bg-light1.jpg');
   background-size: cover;
   background-repeat: repeat;
-  background-attachment: fixed;
-  transition: background-image 2.0s ease; /* Adiciona uma transição suave */
+  background-attachment: scroll;
+  transition: background-image 1.5s ease; /* Adiciona uma transição suave */
 }
 
 /* Estilo para o modo escuro */

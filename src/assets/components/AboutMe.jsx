@@ -11,17 +11,20 @@ export default function AboutMe() {
     >
      <div
         className="max-w-4xl mx-auto px-6 py-16 md:py-20 mt-20 flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-center">
-          Sobre mim
-        </h2>
+        
 
         {/* Imagem do rosto */}
         <img
           id="foto-rosto"
           src="/imagens/para_port5.png" // Caminho CORRETO para a pasta public
           alt="Foto de Flávio"
-          className="hover:scale-130 duration-700 w-80 h-60 object-cover rounded-full shadow-lg mb-8 border-0 border-white dark:border-gray-800"
+          className="hover:scale-130 duration-700 w-80 h-60 object-cover rounded-lg shadow-lg mb-8 border-0 border-white dark:border-gray-800"
         />
+
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-center">
+          Sobre mim
+        </h2>
+
 
         {/* Novo texto da seção "Sobre mim" */}
         <p className="text-lg leading-relaxed mb-4 text-center px-4">
