@@ -22,7 +22,7 @@ export default function AboutMe() {
           if (isDesktop) {
             gsap.fromTo(
               imgRef.current,
-              { y: 200, opacity: 0 }, // começa mais abaixo
+              { y: 200, opacity: 0 },
               {
                 x: 30,
                 opacity: 1,
@@ -104,7 +104,7 @@ export default function AboutMe() {
           <img
             ref={imgRef}
             id="foto-rosto"
-            src="/imagens/para_port5.png" // Caminho CORRETO para a pasta public
+            src="/imagens/para_port5.png"
             alt="Foto de Flávio"
             className="transition-transform duration-900 
                        w-100 h-80 object-cover rounded-md shadow-lg 
