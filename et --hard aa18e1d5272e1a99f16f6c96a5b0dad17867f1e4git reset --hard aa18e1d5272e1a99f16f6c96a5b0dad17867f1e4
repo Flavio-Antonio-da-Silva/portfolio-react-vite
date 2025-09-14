@@ -1,0 +1,101 @@
+[33mcommit 6cfea6663e40028fcc1048b61d6bb91911cfc2ad[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Wed Sep 10 00:22:56 2025 -0300
+
+    Adicionando animações
+    
+    Adicionando animações como gsap
+
+[33mcommit aa18e1d5272e1a99f16f6c96a5b0dad17867f1e4[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Mon Sep 8 21:57:45 2025 -0300
+
+    Meta tag da imagem add.
+    
+    Adicionei meta tag com imagem.
+
+[33mcommit d1e5c272dbb37bb3263b8730a6cc1da647480824[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Mon Sep 8 15:49:58 2025 -0300
+
+    Foto do perfil alterada.
+    
+    Foto do perfil alterada comm sucesso.
+
+[33mcommit 5d16337d1f42938fa04d34e6cbfdd1dbf89d28e1[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Thu Sep 4 05:39:42 2025 -0300
+
+    Adicionei footer.jsx
+    
+    Adicionei o Footer.jsx e Services.jsx
+
+[33mcommit 731f378f2cdeb4bd206df64ccfdcdc10246d37eb[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Wed Sep 3 02:57:40 2025 -0300
+
+    Alterei background do body
+    
+    Alterei o background do body no mode dark/light
+
+[33mcommit 6d7dd98f174b9b9c27db63796704bca17c4a71d1[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Sun Aug 31 13:47:21 2025 -0300
+
+    Meta name criada.
+    
+    Adicionei meta name com descrição.
+
+[33mcommit e8f815cb9dcf256a55fb90fdd9f236ce6701a9a6[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Sat Aug 30 01:17:32 2025 -0300
+
+    Adicionei "mode dark/light"
+    
+    Funcionando perfeitamente bem.
+
+[33mcommit 80439be43168061663545e4cb21d9fa10c960a85[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Fri Aug 29 03:14:59 2025 -0300
+
+    Rodando perfeitamente!
+    
+    Alterei background dos projetos 1 e 2.
+
+[33mcommit c7f2c398340de4c89f0a2b20956453a6dcca3e52[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Thu Aug 28 22:44:41 2025 -0300
+
+    Adicionei um componente.
+    
+    Adicionei o componente "Contacts.jsx".
+
+[33mcommit f8b0b2f4d4ae26457c16a3af41e65d1a381f9854[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Thu Aug 28 16:39:00 2025 -0300
+
+    Iniciando 3D
+    
+    Iniciando alterações 3D nos arquivos.
+
+[33mcommit 0d4c0d9168c9537fe90dce0be9838dbac3258c16[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Wed Aug 27 05:20:42 2025 -0300
+
+    Adicionando modo dark
+    
+    Adicionando modo dark/light ao site do portfólio.
+
+[33mcommit 3daf027ea3cd828351d5ada31b448f8aafeca04d[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Wed Aug 27 02:02:17 2025 -0300
+
+    Arquivo Contacs.jsx criado
+    
+    Arquivo Contacs.jsx criado e rodando no Vercel.
+
+[33mcommit 063b1501928731762eda1f7e9c6e1db045b94c75[m
+Author: Flávio Antônio <flavusantonio@gmail.com>
+Date:   Tue Aug 26 18:17:12 2025 -0300
+
+    Initial commit
