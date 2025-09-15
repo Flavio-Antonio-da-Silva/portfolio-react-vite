@@ -60,7 +60,7 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full bg-gradient-to-r from-blue-300 dark:text-gray-900 rounded-md 
+      className="w-full bg-gradient-to-r from-blue-500 dark:text-purple-500 rounded-md 
                  transform transition-all duration-900 ease-out
                  hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25
                  hover:-translate-y-1 hover:rotate-1

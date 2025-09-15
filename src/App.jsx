@@ -8,18 +8,18 @@ import Contactos from './assets/components/Contactos';
 import Skills from './assets/components/Skills';
 import Projects from './assets/components/Projects';
 import Footer from './assets/components/Footer';
+import MatrixBackground from './assets/components/MatrixBackground'; // 👈 importei o novo componente
 import { gsap } from 'gsap';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Texto com span para controlar quebra responsiva
   const fullText =
     'Dev Front-end: Flávio <span class="block md:inline">Antônio!</span>';
 
   const textRef = useRef(null);
 
-  // Efeito para o modo dark/light
+  // Dark / light mode com transição suave
   useEffect(() => {
     const html = document.documentElement;
     html.style.transition = 'background-color 1.5s ease, color 1.5s ease';
@@ -31,16 +31,13 @@ function App() {
     }
   }, [isDarkMode]);
 
-  // Efeito SplitText com GSAP
+  // Animação das letras no título
   useEffect(() => {
     if (textRef.current) {
       const element = textRef.current;
-
-      // Divide o texto em spans (letra por letra) sem quebrar tags HTML
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = fullText;
 
-      // Constrói o novo conteúdo preservando tags <span>
       const newHtml = Array.from(tempDiv.childNodes)
         .map((node) => {
           if (node.nodeType === Node.TEXT_NODE) {
@@ -54,7 +51,7 @@ function App() {
               )
               .join('');
           }
-          return node.outerHTML; // mantém spans originais intactos
+          return node.outerHTML;
         })
         .join('');
 
@@ -81,18 +78,19 @@ function App() {
   };
 
   return (
-    <div className="text-indigo-800 dark:text-violet-300 min-h-screen">
+    <div className="text-purple-200 dark:text-violet-300 min-h-screen relative">
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
-      {/* Contêiner para centralizar o conteúdo com 95vw */}
-      <div className="w-[95vw] mx-auto overflow-hidden">
+      {/* Background Matrix animado */}
+      <MatrixBackground />
+
+      {/* Conteúdo principal */}
+      <div className="w-[95vw] mx-auto overflow-hidden relative z-10">
         <main className="pt-50">
           <h1
             ref={textRef}
-            className="text-4xl text-center font-bold mb-8"
-          >
-            {/* o conteúdo real é injetado no useEffect */}
-          </h1>
+            className="text-4xl  text-center font-bold mb-8"
+          />
           <AboutMe />
           <Services />
           <Projects />
@@ -101,7 +99,6 @@ function App() {
         </main>
       </div>
 
-      {/* Footer fora do contêiner para ocupar 100vw */}
       <Footer />
     </div>
   );
