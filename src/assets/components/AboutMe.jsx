@@ -64,7 +64,7 @@ export default function AboutMe() {
                  transform transition-all duration-900 ease-out
                  hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25
                  hover:-translate-y-1 hover:rotate-1
-                 group cursor-pointer text-xl"
+                 group  text-xl"
     >
       <div
         className="max-w-5xl mx-auto px-6 py-16 md:py-20 mt-20 
@@ -72,7 +72,7 @@ export default function AboutMe() {
       >
         {/* Texto da seção */}
         <div className="flex-1">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 tracking-tight mb-6 text-center md:text-left">
             Sobre mim
           </h2>
 

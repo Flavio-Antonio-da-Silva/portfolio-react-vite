@@ -5,14 +5,9 @@
 
 /* Estilo para o modo claro (padrão) */
 body {
-  background-image: url('../public/imagens/bg-light1.jpg');
   background-size: cover;
   background-repeat: repeat;
   background-attachment: scroll;
   transition: background-image 1.5s ease; /* Transição suave */
 }
 
-/* Estilo para o modo escuro */
-html.dark body {
-  background-image: url('../public/imagens/bg-dark.webp');
-}
