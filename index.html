@@ -1,18 +1,38 @@
 <!doctype html>
-<html lang="pt-br">
+<html data-theme="light" lang="pt-br" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Criação de Sites Profissionais" />
-    <meta property="og:image" content="https://portfolio-react-vite-lovat.vercel.app/imagens/para_port5.png" />
-    <meta name="description" content="Crie seu site com design responsivo otimizado para dispositivos móveis e desktops, além de facilitadores de buscas no Google." />
-    <link href="/src/index.css" rel="stylesheet">
-    <title>portfolio</title>
-  </head>
-  <body>
 
-    
+    <!-- SEO -->
+    <title>Portfólio | Criação de Sites Profissionais</title>
+    <meta
+      name="description"
+      content="Crie seu site com design responsivo otimizado para dispositivos móveis e desktops, além de SEO para buscas no Google."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Criação de Sites Profissionais" />
+    <meta
+      property="og:description"
+      content="Portfólio de desenvolvimento web moderno com React, Vite, TailwindCSS e GSAP."
+    />
+    <meta
+      property="og:image"
+      content="https://portfolio-react-vite-lovat.vercel.app/imagens/para_port5.png"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Tailwind compilado -->
+    <link href="/src/style.css" rel="stylesheet" />
+  </head>
+    <body class="antialiased transition-colors duration-700">
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

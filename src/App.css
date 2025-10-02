@@ -1,13 +1,9 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+
 #root {
   max-width: 100vw;
+  max-hight: 100vh;
   margin: auto;
 }
-
-/* Estilo para o modo claro (padrão) */
-body {
-  background-size: cover;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  transition: background-image 1.5s ease; /* Transição suave */
-}
-

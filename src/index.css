@@ -1,11 +1,15 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-@custom-variant dark (&:where(.dark, .dark *));
 
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  scroll-behavior: smooth;
+
+
+
+
+
+#root {
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
 }
-

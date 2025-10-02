@@ -6,7 +6,11 @@ import { gsap } from "gsap";
 export default function Navbar({ toggleDarkMode, isDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef(null);
+  const logoRef = useRef(null);
   const linksRef = useRef([]);
+  const mobileMenuRef = useRef(null);
+  const darkModeBtnRef = useRef(null);
+
   linksRef.current = [];
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -23,10 +27,19 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
   const addToRefs = (el) => {
     if (el && !linksRef.current.includes(el)) {
       linksRef.current.push(el);
+
+      // animação de hover com gsap
+      el.addEventListener("mouseenter", () => {
+        gsap.to(el, { scale: 1.12, duration: 0.2, ease: "power2.out" });
+      });
+      el.addEventListener("mouseleave", () => {
+        gsap.to(el, { scale: 1, duration: 0.2, ease: "power2.out" });
+      });
     }
   };
 
   useEffect(() => {
+    // Animação navbar
     if (navRef.current) {
       gsap.fromTo(
         navRef.current,
@@ -35,6 +48,16 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
       );
     }
 
+    // Logo
+    if (logoRef.current) {
+      gsap.fromTo(
+        logoRef.current,
+        { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power3.out" }
+      );
+    }
+
+    // Links desktop
     if (linksRef.current.length > 0) {
       gsap.fromTo(
         linksRef.current,
@@ -42,15 +65,46 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          delay: 0.5,
-          stagger: 0.15,
+          duration: 0.9,
+          delay: 0.6,
+          stagger: 0.18,
           ease: "back.out(1.7)",
-          clearProps: "transform", // 🔑 mantém o hover:scale-110 funcionando
+          clearProps: "transform",
         }
       );
     }
   }, []);
+
+  // Efeito no botão Dark Mode (rotação suave)
+  useEffect(() => {
+    if (darkModeBtnRef.current) {
+      gsap.fromTo(
+        darkModeBtnRef.current,
+        { rotate: 0 },
+        { rotate: 360, duration: 0.6, ease: "back.out(1.7)" }
+      );
+    }
+  }, [isDarkMode]);
+
+  // Animação do menu mobile
+  useEffect(() => {
+    if (mobileMenuRef.current) {
+      if (isOpen) {
+        gsap.fromTo(
+          mobileMenuRef.current,
+          { y: -50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
+        );
+      } else {
+        gsap.to(mobileMenuRef.current, {
+          y: -50,
+          opacity: 0,
+          duration: 0.4,
+          ease: "power2.in",
+        });
+      }
+    }
+  }, [isOpen]);
 
   return (
     <nav
@@ -60,13 +114,17 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
         {/* Logo */}
-        <div className="text-white dark:text-gray-200 text-2xl font-bold">
+        <div
+          ref={logoRef}
+          className="text-white dark:text-gray-200 text-2xl font-bold cursor-pointer"
+        >
           Portfólio
         </div>
 
         {/* Botões Mobile */}
         <div className="flex items-center space-x-4 md:hidden">
           <button
+            ref={darkModeBtnRef}
             onClick={toggleDarkMode}
             className="text-white dark:text-yellow-400 text-2xl focus:outline-none transform transition duration-300 hover:scale-110 active:scale-95"
           >
@@ -90,7 +148,7 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
                 href={`#${id}`}
                 onClick={(e) => handleScrollToSection(e, id)}
                 className="text-white dark:text-blue-400 hover:text-yellow-300
-                  transition-transform transform duration-300 hover:scale-110
+                  transition-transform transform duration-300
                   rounded-md bg-blue-600 dark:bg-gray-800 px-3 py-2"
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -98,6 +156,7 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
             )
           )}
           <button
+            ref={darkModeBtnRef}
             onClick={toggleDarkMode}
             className="text-white dark:text-yellow-400 text-2xl focus:outline-none transform transition duration-300 hover:scale-110"
           >
@@ -123,9 +182,10 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
 
       {/* Menu Mobile */}
       <div
+        ref={mobileMenuRef}
         className={`${
           isOpen ? "block" : "hidden"
-        } md:hidden bg-blue-400 dark:bg-gray-800 absolute top-16 left-0 w-full shadow-lg rounded-b-lg transition-all duration-300 ease-in-out`}
+        } md:hidden bg-blue-400 dark:bg-gray-800 absolute top-16 left-0 w-full shadow-lg rounded-b-lg`}
       >
         <div className="flex flex-col items-center py-4 space-y-4">
           {["sobre-mim", "projetos", "habilidades", "contato"].map((id, i) => (
@@ -133,7 +193,7 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
               key={i}
               href={`#${id}`}
               onClick={(e) => handleScrollToSection(e, id)}
-              className="w-full text-center text-white dark:text-gray-200 hover:bg-blue-300 dark:hover:bg-gray-700 py-2 transform transition duration-300 hover:scale-110"
+              className="w-full text-center text-white dark:text-gray-200 hover:bg-blue-300 dark:hover:bg-gray-700 py-2 transform transition duration-300"
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </a>
