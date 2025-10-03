@@ -56,25 +56,29 @@ export default function AboutMe() {
         }
       }
     );
+
+    return () => mm.revert();
   }, []);
 
   return (
     <section
       id="sobre-mim"
-      className="w-full bg-gradient-to-r from-blue-500 
-                 dark:from-gray-800 dark:to-gray-900 rounded-md 
-                 transition-colors duration-700"
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-500 
+                 dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
+                 transition-colors duration-700 
+                 transform transition-all ease-out 
+                 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 
+                 hover:-translate-y-1 hover:rotate-1 group"
     >
-      <div className="max-w-5xl mx-auto px-6 py-16 md:py-20 mt-20 
-                      flex flex-col-reverse md:flex-row items-center  md:items-start gap-8">
+      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center md:items-start gap-10">
         {/* Texto */}
-        <div ref={textRef} className="flex-1 text-[#1f0783]">
+        <div ref={textRef} className="flex-1">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 
-                         text-blue-900 dark:text-indigo-200 text-center md:text-left">
+                         text-[#1f0783] dark:text-indigo-200 text-center md:text-left">
             Sobre mim
           </h2>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-4  dark:text-gray-200 px-2 md:px-0">
+          <p className="text-lg md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
             Oieee, prazer em conhecê-lo! Muito bom ter você por aqui. Me chamo{" "}
             <strong className="font-sans text-[#470552] dark:text-indigo-400">
               Flávio Antônio
@@ -82,11 +86,11 @@ export default function AboutMe() {
             , sou natural do Rio de Janeiro. Comecei muito cedo no mundo da tecnologia.
           </p>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-4  dark:text-gray-200 px-2 md:px-0">
+          <p className="text-lg md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
             Associei minha paixão por tecnologia à minha antiga função como técnico contábil, criando sites e aplicações web para otimizar meu desempenho profissional. Nos últimos dois anos, migrei minha carreira para o desenvolvimento web, tornando-o minha 1ª profissão.
           </p>
 
-          <p className="text-lg md:text-xl leading-relaxed  dark:text-gray-200 px-2 md:px-0">
+          <p className="text-lg md:text-xl leading-relaxed dark:text-gray-200 text-center md:text-left">
             Atualmente trabalho como freelancer desenvolvendo aplicações para empreendedores e parceiros no mundo da tecnologia. E aí? Vamos juntos nessa trajetória 😉?
           </p>
         </div>
@@ -97,8 +101,9 @@ export default function AboutMe() {
             ref={imgRef}
             src="/imagens/para_port5.png"
             alt="Foto de Flávio"
-            className="w-full max-w-[320px] h-auto object-cover rounded-lg shadow-xl 
-                       transition-transform duration-700 hover:scale-105 hover:shadow-2xl"
+            className="w-full max-w-[280px] sm:max-w-[320px] h-auto object-cover 
+                       rounded-lg shadow-xl transition-transform duration-700 
+                       hover:scale-105 hover:shadow-2xl"
           />
         </div>
       </div>

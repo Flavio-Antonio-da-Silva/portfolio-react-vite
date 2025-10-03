@@ -4,6 +4,56 @@
 
 #root {
   max-width: 100vw;
-  max-hight: 100vh; 
+  min-height: 100vh; 
   margin: auto;
 }
+
+.burger-title {
+  /* Altera a cor do título do Hamburgueria Online */
+  color: #427410 !important;
+  font-family: merryweather, serif;
+  background: linear-gradient(to right, #f0e68c, #ffd700);
+  border-radius: 2.2%;
+  
+}
+
+.hotdog-title {
+ color: #427410 !important;
+  font-family: merryweather, serif;
+  background: linear-gradient(to right, #f0e68c, #ffd700);
+  border-radius: 2.2%;
+  
+}
+
+.automacoes-title {
+  color: #427410 !important;
+  font-family: merryweather, serif;
+  background: linear-gradient(to right, #f0e68c, #ffd700);
+  border-radius: 2.1%;
+ 
+  
+}
+
+/* --- Estilos para as Descrições --- */
+
+.burger-description {
+  /* Altera a cor da descrição do Hamburgueria Online */
+  color: 		#7FFF00 !important;
+  font-size: 1.3rem;
+  font-family: impact;
+}
+
+.hotdog-description {
+  /* Altera a cor da descrição do Hot Dogs Gourmet */
+  color: #7FFF00 !important;
+  font-size: 1.4rem;
+  font-family: impact;
+}
+
+.automacoes-description {
+  /* Altera a cor da descrição da Agência Automações */
+  color: 	#7FFF00 !important;
+  font-size: 1.5rem;
+  font-family: impact;
+}
+
