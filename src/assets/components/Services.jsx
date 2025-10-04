@@ -45,6 +45,16 @@ const servicesData = [
     description:
       "Seu site será uma ferramenta poderosa para atrair clientes, gerar autoridade e crescer online.",
   },
+  {
+    title: "🚀 Serviços",
+    description:
+      "Impulsione sua presença digital com soluções sob medida! Sou desenvolvedor especializado em sites modernos, landing pages de alta conversão, e-commerces eficientes, portfólios profissionais e páginas institucionais — tudo 100% personalizado para refletir sua marca e atingir seus objetivos.",
+  },
+  {
+    title: "💡 Design Responsivo e Inteligente",
+    description:
+      "Seus projetos terão layouts adaptáveis que funcionam perfeitamente em qualquer dispositivo: desktops, tablets e smartphones.",
+  },
 ];
 
 export default function Services() {

@@ -1,27 +1,51 @@
 <!doctype html>
-<html data-theme="light" lang="pt-br" class="scroll-smooth">
+<html lang="pt-br" data-theme="light" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO -->
-    <title>Portfólio | Criação de Sites Profissionais</title>
     <meta
-      name="description"
-      content="Crie seu site com design responsivo otimizado para dispositivos móveis e desktops, além de SEO para buscas no Google."
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5"
     />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Criação de Sites Profissionais" />
+    <!-- SEO básico -->
+    <title>Portfólio | Flávio Antônio - Desenvolvedor Front-end</title>
+    <meta
+      name="description"
+      content="Portfólio de Flávio Antônio, desenvolvedor front-end especializado em React, Vite, TailwindCSS e animações com GSAP. Criação de sites modernos, responsivos e otimizados para SEO."
+    />
+    <meta name="author" content="Flávio Antônio Silva" />
+    <meta
+      name="keywords"
+      content="desenvolvedor front-end, React, Vite, TailwindCSS, GSAP, criação de sites, landing pages, portfólio, SEO"
+    />
+
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+    <meta property="og:title" content="Portfólio | Flávio Antônio - Desenvolvedor Front-end" />
     <meta
       property="og:description"
-      content="Portfólio de desenvolvimento web moderno com React, Vite, TailwindCSS e GSAP."
+      content="Confira meu portfólio com projetos em React, Vite, TailwindCSS e animações modernas com GSAP."
     />
     <meta
       property="og:image"
       content="https://portfolio-react-vite-lovat.vercel.app/imagens/para_port5.png"
     />
+    <meta property="og:url" content="https://portfolio-react-vite-lovat.vercel.app" />
     <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Portfólio | Flávio Antônio - Desenvolvedor Front-end"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfólio moderno e responsivo em React, Vite, TailwindCSS e GSAP."
+    />
+    <meta
+      name="twitter:image"
+      content="https://portfolio-react-vite-lovat.vercel.app/imagens/para_port5.png"
+    />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
@@ -29,10 +53,8 @@
     <!-- Tailwind compilado -->
     <link href="/src/style.css" rel="stylesheet" />
   </head>
-    <body class="antialiased transition-colors duration-700">
-
+  <body class="antialiased transition-colors duration-700">
     <div id="root"></div>
-
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
