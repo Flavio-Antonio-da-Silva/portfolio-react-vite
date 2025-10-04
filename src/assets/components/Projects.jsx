@@ -83,7 +83,7 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20 mt-20">
         <h2
           id="projects-title"
-          className="text-3xl md:text-4xl text-[#1f0783] font-bold tracking-tight mb-10 text-center"
+          className="text-3xl md:text-4xl text-white font-bold tracking-tight mb-10 text-center"
         >
           Projetos
         </h2>

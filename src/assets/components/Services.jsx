@@ -104,7 +104,7 @@ export default function Services() {
                  hover:-translate-y-1 hover:rotate-1 group"
     >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#1f0783] mb-12 text-center tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center tracking-tight">
           Serviços
         </h2>
 

@@ -67,14 +67,13 @@ export default function AboutMe() {
                  dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
                  transition-colors duration-700 
                  transform transition-all ease-out 
-                 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 
-                 hover:-translate-y-1 hover:rotate-1 group"
+                  hover:shadow-2xl hover:shadow-indigo-500/25"
     >
       <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center md:items-start gap-10">
         {/* Texto */}
         <div ref={textRef} className="flex-1">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 
-                         text-[#1f0783] dark:text-indigo-200 text-center md:text-left">
+                         text-white dark:text-indigo-200 text-center md:text-left">
             Sobre mim
           </h2>
 

@@ -9,7 +9,7 @@ export default function Contactos() {
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-10">
-          Contatos
+          Acesse Minhas Rede Sociais!
         </h2>
         
 

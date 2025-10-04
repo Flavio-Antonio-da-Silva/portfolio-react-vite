@@ -28,7 +28,7 @@ export default function Skills() {
                  hover:-translate-y-1 hover:rotate-1 group rounded-md mb-8" // Adicionei rounded-md e mb-8 para consistência
     >
       <div className="container mx-auto">
-        <h2 className="text-4xl text-[#1f0783] font-extrabold text-center mb-10  dark:text-white-300">
+        <h2 className="text-4xl text-white font-extrabold text-center mb-10  dark:text-white-300">
           Minhas Habilidades
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
