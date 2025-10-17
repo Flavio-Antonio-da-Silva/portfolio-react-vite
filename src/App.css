@@ -10,7 +10,7 @@
 
 .burger-title {
   /* Altera a cor do título do Hamburgueria Online */
- color: #7B68EE !important;
+ color: #7B68EE ;
   font-family: merryweather, serif;
   background: linear-gradient(to right, #f0e68c, #ffd700);
   border-radius: 2.2%;
@@ -18,7 +18,7 @@
 }
 
 .hotdog-title {
- color: #7B68EE !important;
+ color: #7B68EE ;
   font-family: merryweather, serif;
   background: linear-gradient(to right, #f0e68c, #ffd700);
   border-radius: 2.2%;
@@ -26,10 +26,10 @@
 }
 
 .automacoes-title {
- color: #7B68EE !important;
+ color: #7B68EE ;
   font-family: merryweather, serif;
   background: linear-gradient(to right, #f0e68c, #ffd700);
-  border-radius: 2.1%;
+  border-radius: 2.2%;
  
   
 }
@@ -38,7 +38,7 @@
 
 .burger-description {
   /* Altera a cor da descrição do Hamburgueria Online */
-  color: #f0d909ff ;
+  color: rgb(4, 146, 134) ;
   font-size: 1.8rem;
   font-family: impact;
 }
@@ -52,7 +52,7 @@
 
 .automacoes-description {
   /* Altera a cor da descrição da Agência Automações */
-  color: 	#20cfcfff ;
+  color: 	rgb(165, 177, 5) ;
   font-size: 1.8rem;
   font-family: impact;
 }

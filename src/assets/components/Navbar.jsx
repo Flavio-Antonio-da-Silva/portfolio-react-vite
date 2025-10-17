@@ -28,7 +28,6 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
     if (el && !linksRef.current.includes(el)) {
       linksRef.current.push(el);
 
-      // animação de hover com gsap
       el.addEventListener("mouseenter", () => {
         gsap.to(el, { scale: 1.12, duration: 0.2, ease: "power2.out" });
       });
@@ -114,11 +113,12 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
         {/* Logo */}
-        <div
-          ref={logoRef}
-          className="text-white dark:text-gray-200 text-2xl font-bold cursor-pointer"
-        >
-          Portfólio
+        <div ref={logoRef} className="flex items-center">
+          <img
+            src="/imagens/Logo_Marca.png"
+            alt="Logo Marca"
+            className="h-16 w-auto object-contain rounded-full select-none"
+          />
         </div>
 
         {/* Botões Mobile */}
