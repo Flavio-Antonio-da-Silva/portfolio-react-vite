@@ -5,6 +5,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
+  
+   {
+    // Adicionando ID único
+    id: "automacoes",
+    title: "🤖 Agência Automações",
+    description:
+      "Site do grupo de implementadores de automações para empresas, lojas, agências e escritórios. Desenvolvido com React, Typescript, TailwindCSS e GSAP.",
+    image: "/imagens/fundo-pj-3.png",
+    link: "https://smart-service-gamma.vercel.app/",
+  },
+  
   { 
     // Adicionando ID único
     id: "burger", 
@@ -23,15 +34,7 @@ const projects = [
     image: "/imagens/fundo-pj-2.png",
     link: "https://projeto-2-tan-eight.vercel.app/",
   },
-  {
-    // Adicionando ID único
-    id: "automacoes",
-    title: "🤖 Agência Automações",
-    description:
-      "Site do grupo de implementadores de automações para empresas, lojas, agências e escritórios. Desenvolvido com React, Typescript, TailwindCSS e GSAP.",
-    image: "/imagens/fundo-pj-3.png",
-    link: "https://smart-service-gamma.vercel.app/",
-  },
+
 ];
 
 export default function Projects() {
