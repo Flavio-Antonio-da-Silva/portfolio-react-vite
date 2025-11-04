@@ -35,25 +35,15 @@
 }
 
 /* --- Estilos para as Descrições --- */
-
-.burger-description {
-  /* Altera a cor da descrição do Hamburgueria Online */
-  color: rgb(4, 146, 134) ;
-  font-size: 1.8rem;
-  font-family: impact;
-}
-
-.hotdog-description {
-  /* Altera a cor da descrição do Hot Dogs Gourmet */
-  color: #f11a1aff ;
-  font-size: 1.8rem;
-  font-family: impact;
-}
-
+.burger-description,
+.hotdog-description,
 .automacoes-description {
-  /* Altera a cor da descrição da Agência Automações */
-  color: 	rgb(165, 177, 5) ;
-  font-size: 1.8rem;
-  font-family: impact;
-}
+  color: #ffffff; 
+  text-shadow: 
+    2px 2px 4px #000000, /* Sombra principal preta */
+    -2px -2px 4px #000000, /* Sombra superior esquerda preta */
+    2px -2px 4px #000000, /* Sombra superior direita preta */
+    -2px 2px 4px #000000; /* Sombra inferior esquerda preta */
 
+  font-size: 1.8rem;
+}

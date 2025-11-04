@@ -28,7 +28,7 @@ const servicesData = [
   {
     title: "💡 Design Responsivo e Inteligente",
     description:
-      "Layouts adaptáveis que funcionam em qualquer dispositivo: desktop, tablet ou smartphone. Nada de perder clientes por experiência ruim no mobile!",
+      "Layouts adaptáveis que funcionam em qualquer dispositivo: desktop, tablet ou smartphone. Nada de perder clientes por experiência ruim no smartphone!",
   },
   {
     title: "🔗 Tecnologia que conecta",
@@ -113,7 +113,7 @@ export default function Services() {
             <div
               key={idx}
               ref={(el) => (cardsRef.current[idx] = el)}
-              className="relative bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-default flex items-center space-x-4"
+              className="relative bg-blue-300 dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-default flex items-center space-x-4"
             >
               <div className="w-16 h-16">
                 <Canvas camera={{ position: [2, 2, 5], fov: 50 }}>
