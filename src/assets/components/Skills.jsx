@@ -22,13 +22,14 @@ export default function Skills() {
   return (
     <section 
       id="habilidades" 
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-400   dark:bg-gray-900 text-gray-900 dark:text-gray-100 
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-400   
+                 dark:bg-gray-900 text-gray-900 dark:text-gray-100 
                  transform transition-all duration-700 ease-out 
-                 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 
-                 hover:-translate-y-1 hover:rotate-1 group rounded-md mb-8" // Adicionei rounded-md e mb-8 para consistência
+                 hover:shadow-2xl hover:shadow-indigo-500/25 
+                 group rounded-md mb-8" // Adicionei rounded-md e mb-8 para consistência
     >
       <div className="container mx-auto">
-        <h2 className="text-4xl text-white font-extrabold text-center mb-10  dark:text-white-300">
+        <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center text-shadow-lg text-shadow-black/90">
           Minhas Habilidades
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
