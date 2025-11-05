@@ -84,12 +84,12 @@ export default function Projects() {
                    transform transition-all duration-700 ease-out mb-8"
     >
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20 mt-20">
-        <h2
+       <h2
           id="projects-title"
-          className="text-3xl md:text-4xl text-white font-bold tracking-tight mb-10 text-center"
+          className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center text-shadow-lg text-shadow-black/90"
         >
-          Projetos
-        </h2>
+  Projetos
+</h2>
 
         {/* Grid dinâmica de projetos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

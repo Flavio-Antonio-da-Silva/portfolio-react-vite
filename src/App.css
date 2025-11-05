@@ -8,30 +8,15 @@
   margin: auto;
 }
 
-.burger-title {
-  /* Altera a cor do título do Hamburgueria Online */
- color: #7B68EE ;
-  font-family: merryweather, serif;
-  background: linear-gradient(to right, #f0e68c, #ffd700);
-  border-radius: 2.2%;
-  
-}
-
-.hotdog-title {
- color: #7B68EE ;
-  font-family: merryweather, serif;
-  background: linear-gradient(to right, #f0e68c, #ffd700);
-  border-radius: 2.2%;
-  
-}
-
+.burger-title,
+.hotdog-title,
 .automacoes-title {
- color: #7B68EE ;
-  font-family: merryweather, serif;
-  background: linear-gradient(to right, #f0e68c, #ffd700);
-  border-radius: 2.2%;
- 
-  
+  /* Novo: Cor do título em Azul Escuro para Alto Contraste */
+  color: #1E3A8A; 
+  font-family: sans-serif;
+  background: linear-gradient(to right, #E0F7FA, #B3E5FC);
+  border-radius: 1.8%;
+  text-shadow: 2px 2px 4px #ccc7c7, -2px -2px 4px #ccc7c7, 2px -2px 4px #cccc7c, -2px 2px 4px #575555;
 }
 
 /* --- Estilos para as Descrições --- */
@@ -44,6 +29,5 @@
     -2px -2px 4px #000000, /* Sombra superior esquerda preta */
     2px -2px 4px #000000, /* Sombra superior direita preta */
     -2px 2px 4px #000000; /* Sombra inferior esquerda preta */
-
   font-size: 1.8rem;
 }
