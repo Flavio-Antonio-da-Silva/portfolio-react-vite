@@ -92,9 +92,7 @@ export default function AboutMe() {
           </p>
         </div>
 
-        <div className="font-impact text-4xl">
-  Teste da fonte Chonburi
-</div>
+        
 
 
         {/* IMAGEM SEGUNDO — agora aparece à direita no desktop */}
