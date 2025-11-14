@@ -63,16 +63,15 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-500 
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500 to-green-200
                  dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
-                 transition-colors duration-700 
-                 transform transition-all "
-              
+                 transition-colors duration-700 transform transition-all"
     >
-      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center md:items-start gap-10">
-        {/* Texto */}
-        <div ref={textRef} className="flex-1">
-          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center text-shadow-lg text-shadow-black/90">
+      <div className="max-w-auto mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        {/* TEXTO PRIMEIRO */}
+        <div ref={textRef} className="font-domine w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs text-shadow-yellow-900 ">
+          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center md:text-left text-shadow-lg text-shadow-black/90">
             Sobre mim
           </h2>
 
@@ -93,16 +92,31 @@ export default function AboutMe() {
           </p>
         </div>
 
-        {/* Imagem */}
-        <div className="flex-1 flex justify-center md:justify-end">
+        <div className="font-impact text-4xl">
+  Teste da fonte Chonburi
+</div>
+
+
+        {/* IMAGEM SEGUNDO — agora aparece à direita no desktop */}
+        <div className="w-full flex justify-center md:justify-end">
           <img
-              ref={imgRef}
-              src="/imagens/foto_perfil_pot.png"
-              alt="Foto de Flávio"
-              className="w-full md:w-[90%] lg:w-full h-auto object-contain 
-                         transition-transform duration-300 
-                         hover:scale-105 hover:shadow-indigo-500/30"  />
-            </div>
+            ref={imgRef}
+            src="/imagens/foto_perfil_pot.png"
+            alt="Foto de Flávio"
+            className="
+              w-[95%]
+              sm:w-[85%]
+              md:w-[100%]
+              lg:max-w-[1068px]
+              lg:h-[568px]
+              object-contain
+              rounded-2xl
+              transition-transform
+              duration-300
+            "
+            loading="lazy"
+          />
+        </div>
 
       </div>
     </section>
