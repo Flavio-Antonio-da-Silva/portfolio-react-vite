@@ -63,21 +63,21 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500 to-green-200
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500 to-orange-700
                  dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
                  transition-colors duration-700 transform transition-all"
     >
       <div className="max-w-auto mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
         {/* TEXTO PRIMEIRO */}
-        <div ref={textRef} className="font-domine w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs text-shadow-yellow-900 ">
+        <div ref={textRef} className="font-[Domine]  w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs text-shadow-yellow-900 ">
           <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center md:text-left text-shadow-lg text-shadow-black/90">
             Sobre mim
           </h2>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
+          <p className="text-lg  md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
             Oieee, prazer em conhecê-lo! Muito bom ter você por aqui. Me chamo{" "}
-            <strong className="font-sans text-[#470552] dark:text-indigo-400">
+            <strong className="font-sans text-[#470552] dark:text-indigo-300">
               Flávio Antônio
             </strong>
             , sou natural do Rio de Janeiro. Comecei muito cedo no mundo da tecnologia.

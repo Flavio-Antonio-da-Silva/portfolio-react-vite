@@ -10,9 +10,9 @@ export default function MatrixBackground({ isDarkMode, speed = 1 }) {
 
   // Paletas de cores
   const bgDark = "rgba(20, 40, 60, 0.7)";
-  const bgLight = "rgba(200, 225, 250, 0.1)";
+  const bgLight = "rgba(123, 239, 214, 0.64)";
   const textDark = "#13E191"; // neon
-  const textLight = "#0C881C"; // musgo discreto
+  const textLight = "#006400"; // musgo discreto
 
   useEffect(() => {
     const canvas = canvasRef.current;

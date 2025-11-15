@@ -97,7 +97,7 @@ export default function Services() {
   return (
     <section
       id="servicos"
-      className="w-full py-20 px-4 bg-gradient-to-r from-teal-500 
+      className="w-full py-20 px-4 bg-gradient-to-r from-teal-500 via-[#6495ED] via-[#00BFFF] via-pourple-400- to-orange-500
                  dark:from-gray-800 dark:text-rose-200 rounded-md mb-8
                  transform transition-all duration-700 ease-out 
                  hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 
@@ -113,7 +113,7 @@ export default function Services() {
             <div
               key={idx}
               ref={(el) => (cardsRef.current[idx] = el)}
-              className="relative bg-blue-300 dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-default flex items-center space-x-4"
+              className="relative bg-[#F4A460] dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-default flex items-center space-x-4"
             >
               <div className="w-16 h-16">
                 <Canvas camera={{ position: [2, 2, 5], fov: 50 }}>
@@ -134,8 +134,8 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center mt-12 space-y-4 md:space-y-0 md:space-x-6">
-          <p className="text-lg text-center max-w-xl">
+        <div className="flex flex-col md:flex-row items-center text-shadow-lg text-shadow-white  justify-center mt-12 space-y-4 md:space-y-0 md:space-x-6">
+          <p className="text-[32px] text-center text-[#0000CD] font-impact max-w-xl">
             Entre em contato e descubra como podemos levar sua presença digital
             ao próximo nível!
           </p>
@@ -144,7 +144,7 @@ export default function Services() {
             href="https://wa.me/seu-numero-aqui"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center p-4 rounded-full bg-green-500 text-white font-bold hover:bg-green-600 transition-colors shadow-lg"
+            className="flex items-center justify-center w-36 h-12  p-4 rounded-full bg-green-500 text-white font-bold hover:bg-green-600 transition-colors shadow-lg"
           >
             <FaWhatsapp size={36} />
           </a>
