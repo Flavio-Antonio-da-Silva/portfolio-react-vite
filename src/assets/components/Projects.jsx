@@ -4,139 +4,65 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  
-   {
-    // Adicionando ID único
-    id: "automacoes",
-    title: "🤖 Agência Automações",
-    description:
-      "Site do grupo de implementadores de automações para empresas, lojas, agências e escritórios. Desenvolvido com React, Typescript, TailwindCSS e GSAP.",
-    image: "/imagens/fundo-pj-3.png",
-    link: "https://smart-service-gamma.vercel.app/",
-  },
-  
-  { 
-    // Adicionando ID único
-    id: "burger", 
-    title: "🍔 Hamburgueria Online",
-    description:
-      "Cardápio interativo onde o cliente pode selecionar os sanduíches clicando no ícone de carrinho, visualizar o subtotal, finalizar pedidos e contactar a hamburgueria pelo WhatsApp.",
-    image: "/imagens/fundo-pj-1.png",
-    link: "https://hamburgueria-mh9hlyshz-flavio-antonio-da-silvas-projects.vercel.app/",
-  },
-  {
-    // Adicionando ID único
-    id: "hotdog",
-    title: "🌭 Hot Dogs Gourmet",
-    description:
-      "Site interativo para lanchonete de hot dogs gourmet. O cliente seleciona os itens em caixinhas de seleção, verifica os itens escolhidos, subtotal, finaliza o pedido e contacta a lanchonete pelo WhatsApp.",
-    image: "/imagens/fundo-pj-2.png",
-    link: "https://projeto-2-tan-eight.vercel.app/",
-  },
+const Projects = () => {
+  const projects = [ 
+    {
+      title: "🤖 Agência Automações",
+      image: "/imagens/fundo-pj-3.png",
+      description: "Site do grupo de implementadores de automações para empresas, lojas, agências e escritórios. Desenvolvido com React, Typescript, TailwindCSS e GSAP"
+    },
+    {
+      title: "🥼 Clínica Dentária",
+      image: "/imagens/clinica_dental.png",
+      description: "Site para clínica dentária criado em TypeScript, Tailwindcss e React"
+    },
+    {
+      title: "🍔 Cardápio Hamburgueria",
+      image: "/imagens/fundo-pj-1.png",
+      description: "Cardápio Hamburgueria interativo onde o cliente pode selecionar os sanduíches clicando no ícone de carrinho, visualizar o subtotal, finalizar pedidos e contactar a hamburgueria pelo WhatsApp."
+    },
+    {
+      title: "🌭 Hot Dog Gourm",
+      image: "/imagens/fundo-pj-2.png",
+      description: "Site interativo para lanchonete de hot dogs gourmet. O cliente seleciona os itens em caixinhas de seleção, verifica os itens escolhidos, subtotal, finaliza o pedido e contacta a lanchonete pelo WhatsApp."
+    }
+  ];
 
-];
-
-export default function Projects() {
   useEffect(() => {
-    const cards = gsap.utils.toArray(".project-card");
-
-    gsap.fromTo(
-      "#projects-title",
-      { y: -30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: "#projetos",
-          start: "top 85%",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      cards,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        stagger: 0.25,
-        scrollTrigger: {
-          trigger: "#projetos",
-          start: "top 80%",
-        },
-      }
-    );
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    const cards = gsap.utils.toArray('.project-card');
+    cards.forEach((card, index) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
   }, []);
 
   return (
-    <section
-      id="projetos"
-      className="w-full py-20 bg-gradient-to-r from-indigo-500 text-gray-900 rounded-md 
-                   transform transition-all duration-700 ease-out mb-8"
+    <section   className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500 to-orange-700
+                 dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
+                 transition-colors duration-700 transform transition-all"
     >
-      <div className="max-w-6xl mx-auto px-6 py-16 md:py-20 mt-20">
-       <h2
-          id="projects-title"
-          className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center text-shadow-lg text-shadow-black/90"
-        >
-  Projetos
-</h2>
-
-        {/* Grid dinâmica de projetos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-200 text-shadow-lg text-shadow-black/90 dark:text-white"> Meus Projetos</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="project-card relative p-4 md:p-6 bg-cover bg-center rounded-xl shadow-lg flex flex-col justify-between 
-                          group overflow-hidden transform transition duration-500 
-                          hover:scale-105"
-              style={{
-                backgroundImage: `url(${project.image})`,
-              }}
-            >
-              {/* Overlay de contraste fixo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent 
-                               dark:from-black/80 dark:via-black/50 dark:to-transparent 
-                               rounded-xl transition duration-500 ease-in-out"></div>
-
-              {/* Conteúdo com texto legível */}
-              <div className="relative z-10 ">
-                {/* O ID do projeto é usado para criar uma classe CSS única para o título.
-                  Ex: "burger-title"
-                */}
-                <h3 className={`text-xl md:text-2xl font-roboto mb-3 drop-shadow-lg ${project.id}-title`}>
-                  {project.title}
-                </h3>
-                {/* O ID do projeto é usado para criar uma classe CSS única para a descrição.
-                  Ex: "burger-description"
-                */}
-                <p className={`mb-4 text-sm md:text-base leading-relaxed drop-shadow-md ${project.id}-description`}>
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Botão */}
-              <div className="flex justify-between mt-4 relative z-10"> 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Ver projeto ${project.title}`}
-                  className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 
-                                 text-white font-medium transition transform hover:scale-105 
-                                 shadow-md hover:shadow-lg active:scale-95"
-                >
-                  Ver Projeto
-                </a>
+            <div key={index} className="project-card border-24px bg-[#EDD2B7] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
               </div>
             </div>
           ))}
@@ -144,4 +70,6 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+};
+
+export default Projects;
