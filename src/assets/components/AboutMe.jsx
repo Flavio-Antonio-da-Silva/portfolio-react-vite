@@ -63,40 +63,14 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500 to-orange-700
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500 via-yellow-200 to-orange-400
                  dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
                  transition-colors duration-700 transform transition-all"
     >
       <div className="max-w-auto mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-        {/* TEXTO PRIMEIRO */}
-        <div ref={textRef} className="font-[Domine]  w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs text-shadow-yellow-900 ">
-          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center md:text-left text-shadow-lg text-shadow-black/90">
-            Sobre mim
-          </h2>
-
-          <p className="text-lg  md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
-            Oieee, prazer em conhecê-lo! Muito bom ter você por aqui. Me chamo{" "}
-            <strong className="font-sans text-[#470552] dark:text-indigo-300">
-              Flávio Antônio
-            </strong>
-            , sou natural do Rio de Janeiro. Comecei muito cedo no mundo da tecnologia.
-          </p>
-
-          <p className="text-lg md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
-            Associei minha paixão por tecnologia à minha antiga função como técnico contábil, criando sites e aplicações web para otimizar meu desempenho profissional. Nos últimos dois anos, migrei minha carreira para o desenvolvimento web, tornando-o minha 1ª profissão.
-          </p>
-
-          <p className="text-lg md:text-xl leading-relaxed dark:text-gray-200 text-center md:text-left">
-            Atualmente trabalho como freelancer desenvolvendo aplicações para empreendedores e parceiros no mundo da tecnologia. E aí? Vamos juntos nessa trajetória 😉?
-          </p>
-        </div>
-
-        
-
-
-        {/* IMAGEM SEGUNDO — agora aparece à direita no desktop */}
-        <div className="w-full flex justify-center md:justify-end">
+        {/* IMAGEM — agora aparece antes no mobile */}
+        <div className="w-full flex justify-center md:justify-end order-1 md:order-2">
           <img
             ref={imgRef}
             src="/imagens/foto_perfil_pot.png"
@@ -114,6 +88,37 @@ export default function AboutMe() {
             "
             loading="lazy"
           />
+        </div>
+
+        {/* TEXTO — agora aparece abaixo no mobile */}
+        <div
+          ref={textRef}
+          className="font-[Domine] w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs text-shadow-yellow-900 order-2 md:order-1"
+        >
+          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center md:text-left text-shadow-lg text-shadow-black/90">
+            Sobre mim
+          </h2>
+
+          <p className="text-lg md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
+            Oieee, prazer em conhecê-lo! Muito bom ter você por aqui. Me chamo{" "}
+            <strong className="font-sans text-[#470552] dark:text-indigo-300">
+              Flávio Antônio
+            </strong>
+            , sou natural do Rio de Janeiro. Comecei muito cedo no mundo da tecnologia.
+          </p>
+
+          <p className="text-lg md:text-xl leading-relaxed mb-4 dark:text-gray-200 text-center md:text-left">
+            Associei minha paixão por tecnologia à minha antiga função como técnico contábil,
+            criando sites e aplicações web para otimizar meu desempenho profissional.
+            Nos últimos dois anos, migrei minha carreira para o desenvolvimento web,
+            tornando-o minha 1ª profissão.
+          </p>
+
+          <p className="text-lg md:text-xl leading-relaxed dark:text-gray-200 text-center md:text-left">
+            Atualmente trabalho como freelancer desenvolvendo aplicações para
+            empreendedores e parceiros no mundo da tecnologia. E aí?
+            Vamos juntos nessa trajetória 😉?
+          </p>
         </div>
 
       </div>
