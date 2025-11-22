@@ -97,7 +97,7 @@ export default function Services() {
   return (
     <section
       id="servicos"
-      className="w-full py-20 px-4 bg-gradient-to-r from-teal-500 via-[#6495ED] via-[#00BFFF] via-pourple-400- to-orange-500
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-900  via-blue-500 via-blue-700- to-blue-900
                  dark:from-gray-800 dark:text-rose-200 rounded-md mb-8
                  transform transition-all duration-700 ease-out 
                  hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 
