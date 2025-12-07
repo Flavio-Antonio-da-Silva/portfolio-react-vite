@@ -1,29 +1,87 @@
 #root {
   max-width: 100vw;
-  min-height: 100vh; 
+  min-height: 100vh;
   margin: auto;
 }
+
+/* --------------------------------------------- */
+/* TITULOS                                       */
+/* --------------------------------------------- */
 
 .burger-title,
 .hotdog-title,
 .automacoes-title {
-  /* Novo: Cor do título em Azul Escuro para Alto Contraste */
-  color: #1E3A8A; 
+  color: #1E3A8A;
   font-family: sans-serif;
   background: linear-gradient(to right, #E0F7FA, #B3E5FC);
   border-radius: 1.8%;
-  text-shadow: 2px 2px 4px #ccc7c7, -2px -2px 4px #ccc7c7, 2px -2px 4px #cccc7c, -2px 2px 4px #575555;
+  text-shadow:
+    2px 2px 4px #ccc7c7,
+    -2px -2px 4px #ccc7c7,
+    2px -2px 4px #ccc7c7,
+    -2px 2px 4px #575555;
 }
 
-/* --- Estilos para as Descrições --- */
+/* DESCRIÇÕES */
 .burger-description,
 .hotdog-description,
 .automacoes-description {
-  color: #ffffff; 
-  text-shadow: 
-    2px 2px 4px #000000, /* Sombra principal preta */
-    -2px -2px 4px #000000, /* Sombra superior esquerda preta */
-    2px -2px 4px #000000, /* Sombra superior direita preta */
-    -2px 2px 4px #000000; /* Sombra inferior esquerda preta */
+  color: #ffffff;
+  text-shadow:
+    2px 2px 4px #000000,
+    -2px -2px 4px #000000,
+    2px -2px 4px #000000,
+    -2px 2px 4px #000000;
   font-size: 1.8rem;
+}
+
+/* --------------------------------------------- */
+/* GLOW E SOMBRA                                 */
+/* --------------------------------------------- */
+
+/* glow amarelo pulsante */
+.card-glow {
+  border: 8px solid rgba(250, 204, 21, 0.6);
+  animation: glowPulse 3s infinite ease-in-out;
+  box-shadow:
+    0 0 20px rgba(255, 200, 80, 0.15),
+    0 0 40px rgba(255, 140, 0, 0.1);
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 4px rgba(250, 204, 21, 0.5); }
+  50% { box-shadow: 0 0 14px rgba(250, 204, 21, 0.9); }
+  100% { box-shadow: 0 0 4px rgba(250, 204, 21, 0.5); }
+}
+
+/* sombra laranja pulsante */
+.card-shadow-orange {
+  animation: orangeShadowPulse 3.2s infinite ease-in-out;
+}
+
+@keyframes orangeShadowPulse {
+  0%   { box-shadow: 0 0 8px rgba(234, 88, 12, 0.45); }
+  50%  { box-shadow: 0 0 18px rgba(234, 88, 12, 0.85); }
+  100% { box-shadow: 0 0 8px rgba(234, 88, 12, 0.45); }
+}
+
+/* --------------------------------------------- */
+/* EFEITO 3D                                     */
+/* --------------------------------------------- */
+
+.card-tilt {
+  perspective: 900px;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+}
+
+/* só no desktop */
+@media (min-width: 768px) {
+  .card-tilt:hover {
+    transform: rotateX(8deg) rotateY(-8deg) scale(1.03);
+  }
+
+  .card-tilt:active {
+    transform: rotateX(2deg) rotateY(-2deg) scale(0.97);
+  }
 }
