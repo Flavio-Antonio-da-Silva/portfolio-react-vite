@@ -105,21 +105,23 @@ export default function Services() {
                   
     
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight
-         mb-10 text-center text-shadow-lg text-shadow-black-600/90">
+        <h2 className="text-3xl md:text-4xl text-gray-300 dark:text-blue-950 font-bold tracking-tight
+         mb-10 text-center text-shadow-lg text-shadow-zinc-400">
           Serviços
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full  ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full   ">
           {servicesData.map((service, idx) => (
             <div
               key={idx}
               ref={(el) => (cardsRef.current[idx] = el)}
-              className="relative rounded-xl p-6 shadow-lg hover:shadow-2xl  bg-linear-to-t from-yellow-600 via-yellow-400 to-yellow-200
+              className="relative rounded-xl p-6 shadow-lg hover:shadow-2xl  
+              bg-linear-to-t from-yellow-600 via-yellow-400 to-yellow-200
+              dark:bg-linear-to-t dark:from-blue-800 dark:via-blue-700 dark:to-blue-600
               transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 
               cursor-default flex items-center space-x-4"
             >
-              <div className="w-16 h-16">
+              <div className="w-16 h-16 ">
                 <Canvas camera={{ position: [2, 2, 5], fov: 50 }}>
                   <ambientLight intensity={0.5} />
                   <directionalLight position={[5, 5, 5]} intensity={1} />
@@ -127,7 +129,7 @@ export default function Services() {
                 </Canvas>
               </div>
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-blue-500 dark:text-blue-400 mb-2">
+                <h3 className="text-xl md:text-2xl font-bold text-blue-500 dark:text-blue-300 mb-2">
                   {service.title}
                 </h3>
                 <p className="text-md md:text-lg leading-relaxed text-gray-700 dark:text-gray-200">

@@ -93,8 +93,8 @@ export default function AboutMe() {
         {/* TEXTO — agora aparece abaixo no mobile */}
         <div
           ref={textRef}
-          className="font-[Domine] dark:text-[#F0FFFF] w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs 
-          text-shadow-yellow-900 order-2 md:order-1"
+          className="font-[Domine] dark:text-[#F0FFFF] w-full pr-0 md:pr-8 text-[#4B0082]  
+           order-2 md:order-1"
         >
           <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center 
                          md:text-left text-shadow-lg text-shadow-black/90">

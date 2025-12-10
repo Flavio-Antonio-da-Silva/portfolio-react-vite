@@ -65,23 +65,11 @@
   100% { box-shadow: 0 0 8px rgba(234, 88, 12, 0.45); }
 }
 
-/* --------------------------------------------- */
-/* EFEITO 3D                                     */
-/* --------------------------------------------- */
-
-.card-tilt {
-  perspective: 900px;
+.preserve-3d {
   transform-style: preserve-3d;
-  transition: transform 0.35s ease;
 }
 
-/* só no desktop */
-@media (min-width: 768px) {
-  .card-tilt:hover {
-    transform: rotateX(8deg) rotateY(-8deg) scale(1.03);
-  }
 
-  .card-tilt:active {
-    transform: rotateX(2deg) rotateY(-2deg) scale(0.97);
-  }
-}
+
+
+  
