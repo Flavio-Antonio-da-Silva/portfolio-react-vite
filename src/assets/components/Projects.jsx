@@ -70,7 +70,7 @@ const projectsData = [
 function ProjectCard({ project }) {
   return (
     <div
-  className="card-glow bg-white/10 dark:bg-black/20 backdrop-blur-sm 
+  className="card-glow card-shadow-orange card-tilt bg-white/10 dark:bg-black/20 backdrop-blur-sm 
   rounded-xl p-4 shadow-md transition-all duration-300 w-full max-w-xs"
   id="cards"
 >
@@ -120,13 +120,17 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full py-20 flex flex-col items-center text-center"
+      className="w-full py-20 flex  flex-col items-center text-center "
     >
-      <h2 className="text-3xl font-bold mb-10 tracking-wide">
+      <h2 className="text-3xl font-bold text-zinc-700 dark:text-gray-100 text-shadow-lg 
+      text-shadow-neutral-100/50   mb-10 tracking-wide 
+     ">
         Projetos Recentes
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-8 w-full">
+      <div className="flex flex-wrap justify-center gap-8 w-full md:hover:rotate-x-16 
+
+      md:hover:-rotate-y-16 md:hover:scale-103 md:hover:translate-z-20">
         {projectsData.map((p, i) => (
           <ProjectCard key={i} project={p} />
         ))}

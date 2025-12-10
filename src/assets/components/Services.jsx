@@ -97,23 +97,27 @@ export default function Services() {
   return (
     <section
       id="servicos"
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-900  via-blue-500 via-blue-700- to-blue-900
-                 dark:from-gray-800 dark:text-rose-200 rounded-md mb-8
-                 transform transition-all duration-700 ease-out 
-                 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/25 
-                 hover:-translate-y-1 hover:rotate-1 group"
-    >
+      className="w-full py-20 px-4 bg-gradient-to-r from-violet-900  via-blue-500 via-blue-700- to-sky-400
+                 dark:from-gray-800 dark:text-rose-200
+                 rounded-md mb-8
+                 transform transition-all duration-700 ease-out" >
+                  
+                  
+    
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center text-shadow-lg text-shadow-black/90">
+        <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight
+         mb-10 text-center text-shadow-lg text-shadow-black-600/90">
           Serviços
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full  ">
           {servicesData.map((service, idx) => (
             <div
               key={idx}
               ref={(el) => (cardsRef.current[idx] = el)}
-              className="relative bg-[#F4A460] dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 cursor-default flex items-center space-x-4"
+              className="relative rounded-xl p-6 shadow-lg hover:shadow-2xl  bg-linear-to-t from-yellow-600 via-yellow-400 to-yellow-200
+              transition-transform duration-500 transform hover:-translate-y-2 hover:scale-105 
+              cursor-default flex items-center space-x-4"
             >
               <div className="w-16 h-16">
                 <Canvas camera={{ position: [2, 2, 5], fov: 50 }}>
@@ -134,7 +138,8 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="flex flex-col md:flex-row items-center text-shadow-lg text-shadow-white  justify-center mt-12 space-y-4 md:space-y-0 md:space-x-6">
+        <div className="flex flex-col md:flex-row items-center text-shadow-lg text-shadow-white  
+                     justify-center mt-12 space-y-4 md:space-y-0 md:space-x-6">
           <p className="text-[32px] text-center text-[#0000CD] font-impact max-w-xl">
             Entre em contato e descubra como podemos levar sua presença digital
             ao próximo nível!

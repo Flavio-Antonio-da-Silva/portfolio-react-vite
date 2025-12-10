@@ -63,7 +63,7 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-300 via-blue-400 via-blue-500  to-orange-400
+      className="w-full py-20 px-4 bg-gradient-to-r from-blue-400 via-blue-500 via-blue-600  to-blue-700
                  dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
                  transition-colors duration-700 transform transition-all"
     >
@@ -93,9 +93,11 @@ export default function AboutMe() {
         {/* TEXTO — agora aparece abaixo no mobile */}
         <div
           ref={textRef}
-          className="font-[Domine] dark:text-[#F0FFFF] w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs text-shadow-yellow-900 order-2 md:order-1"
+          className="font-[Domine] dark:text-[#F0FFFF] w-full pr-0 md:pr-8 text-[#4B0082] text-shadow-2xs 
+          text-shadow-yellow-900 order-2 md:order-1"
         >
-          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center md:text-left text-shadow-lg text-shadow-black/90">
+          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center 
+                         md:text-left text-shadow-lg text-shadow-black/90">
             Sobre mim
           </h2>
 
