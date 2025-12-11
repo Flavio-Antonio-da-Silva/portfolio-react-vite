@@ -50,8 +50,7 @@ function ThreeDTextContent({ text, color }) {
       anchorX="center"
       anchorY="middle"
       maxWidth={6}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
+     
     >
       {text}
     </Text>

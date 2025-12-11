@@ -84,7 +84,7 @@ export default function AboutMe() {
               object-contain
               rounded-2xl
               transition-transform
-              duration-300
+              duration-200
             "
             loading="lazy"
           />
@@ -96,7 +96,7 @@ export default function AboutMe() {
           className="font-[Domine] dark:text-[#F0FFFF] w-full pr-0 md:pr-8 text-[#4B0082]  
            order-2 md:order-1"
         >
-          <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center 
+          <h2 className="text-5xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center 
                          md:text-left text-shadow-lg text-shadow-black/90">
             Sobre mim
           </h2>

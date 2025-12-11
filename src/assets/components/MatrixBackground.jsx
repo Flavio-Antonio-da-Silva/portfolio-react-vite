@@ -10,7 +10,7 @@ export default function MatrixBackground({ isDarkMode, speed = 1 }) {
 
   // Paletas de cores
   const bgDark = "rgba(20, 40, 60, 0.7)";
-  const bgLight = "rgba(198, 168, 150, 0.9)";
+  const bgLight = "rgba(85, 107, 62, 0.6)";
   const textDark = "#13E191"; // neon
   const textLight = "#006400"; // musgo discreto
 

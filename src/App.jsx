@@ -36,16 +36,16 @@ function App() {
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
       {/* Background Matrix animado */}
-      <MatrixBackground isDarkMode={isDarkMode} speed={0.16} />
+      <MatrixBackground isDarkMode={isDarkMode} speed={0.12} />
 
       {/* Conteúdo principal */}
       <div className="w-[95vw] mx-auto overflow-hidden relative z-10">
         <main className="pt-20 md:pt-28 flex flex-col items-center text-center">
           {/* Texto 3D responsivo */}
-          <div className="w-full max-w-4xl h-[180px] md:h-[220px] mb-12">
+          <div className="w-full max-w-4xl h-[180px] md:h-[220px] mb-12 font-alfa">
             <ThreeDText
-              text="Dev Front-end: Flávio Antônio!"
-              color={isDarkMode ? "#13E191" : "#5819c2"}
+              text="Desenvolvedor: Flávio Antônio!"
+              color={isDarkMode ? "#e8fde6" : "#e8fde6"}
             />
           </div>
 

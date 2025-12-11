@@ -70,6 +70,10 @@
 }
 
 
-
-
-  
+#sobre-mim,
+#servicos,
+#projetos,
+#habilidades,
+#contato {
+  scroll-margin-top: 140px;
+}

@@ -1,5 +1,5 @@
 // src/components/Projects.jsx
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import {
   ScrollControls,
@@ -25,7 +25,8 @@ gsap.registerPlugin(Draggable);
 const projectsData = [
   {
     title: "LP Reformas & Manutenção",
-    description: "Site para divulgação de serviços de manutenção predial e reformas.",
+    description:
+      "Site para divulgação de serviços de manutenção predial e reformas.",
     emoji: "🔧",
     image: "/imagens/card_lpreformas.png",
     link: "https://lpreformas.vercel.app/",
@@ -33,7 +34,8 @@ const projectsData = [
   },
   {
     title: "Agência Automações",
-    description: "Site para divulgação de impantação de automações e captação de leads.",
+    description:
+      "Site para divulgação de impantação de automações e captação de leads.",
     emoji: "🤖",
     image: "/imagens/fundo-pj-3.png",
     link: "https://smart-service-cegi.vercel.app/",
@@ -41,7 +43,8 @@ const projectsData = [
   },
   {
     title: "Clínica Dentária",
-    description: "Site para divulgação de serviços odontológicos e captação de clientes.",
+    description:
+      "Site para divulgação de serviços odontológicos e captação de clientes.",
     emoji: "🦷",
     image: "/imagens/clinica_dental.png",
     link: "https://dental-odonto-9qbj.vercel.app/",
@@ -57,7 +60,8 @@ const projectsData = [
   },
   {
     title: "Hot Dog Gourm",
-    description: "Aplicação de Menu virtual para autoatendimento de clientes.",
+    description:
+      "Aplicação de Menu virtual para autoatendimento de clientes.",
     emoji: "🌭",
     image: "/imagens/fundo-pj-2.png",
     link: "https://projeto-2-tan-eight.vercel.app/",
@@ -68,18 +72,54 @@ const projectsData = [
 // ----------------------------------------------------------------------
 
 function ProjectCard({ project }) {
+  const cardRef = useRef(null);
+
+  // Efeito 3D individual baseado no mouse (construção do transform por concatenação para evitar problemas de transpilação)
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotX = ((y / rect.height) - 0.5) * -20;
+    const rotY = ((x / rect.width) - 0.5) * 20;
+
+    const transformStr =
+      "perspective(900px) " +
+      "rotateX(" +
+      rotX +
+      "deg) " +
+      "rotateY(" +
+      rotY +
+      "deg) " +
+      "scale(1.04)";
+
+    card.style.transform = transformStr;
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+  };
+
   return (
     <div
-  className="card-glow card-shadow-orange card-tilt bg-white/10 dark:bg-black/20 backdrop-blur-sm 
-  rounded-xl p-4 shadow-md transition-all duration-300 w-full max-w-xs"
-  id="cards"
->
-
-      <div className="w-full h-40 rounded-lg overflow-hidden bg-blue-400/40 mb-4 ">
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="card-glow card-shadow-orange bg-white/10 dark:bg-black/20 
+      backdrop-blur-md rounded-xl p-4 shadow-md transition-transform duration-300 
+      w-full max-w-xs transform-gpu"
+      id="cards"
+    >
+      <div className="w-full h-40 rounded-lg overflow-hidden bg-blue-400/40 mb-4">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover"
         />
       </div>
 
@@ -105,8 +145,9 @@ function ProjectCard({ project }) {
       <a
         href={project.link}
         target="_blank"
-        className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 
-        text-white py-2 rounded-md transition-colors duration-300"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 bg-purple-600 
+        hover:bg-purple-900 text-white py-2 rounded-md transition-colors duration-200"
       >
         Visitar projeto <ExternalLink size={16} />
       </a>
@@ -120,17 +161,16 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full py-20 flex  flex-col items-center text-center "
+      className="w-full py-20 flex flex-col items-center text-center"
     >
-      <h2 className="text-3xl font-bold text-zinc-700 dark:text-gray-100 text-shadow-lg 
-      text-shadow-neutral-100/50   mb-10 tracking-wide 
-     ">
+      <h2
+        className="text-6xl font-bold text-[#FFFF00] dark:text-gray-100 
+        text-shadow-lg text-shadow-neutral-100/50 mb-10 tracking-wide"
+      >
         Projetos Recentes
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-8 w-full md:hover:rotate-x-16 
-
-      md:hover:-rotate-y-16 md:hover:scale-103 md:hover:translate-z-20">
+      <div className="flex flex-wrap justify-center gap-8 w-full">
         {projectsData.map((p, i) => (
           <ProjectCard key={i} project={p} />
         ))}

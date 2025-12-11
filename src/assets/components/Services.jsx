@@ -142,7 +142,7 @@ export default function Services() {
 
         <div className="flex flex-col md:flex-row items-center text-shadow-lg text-shadow-white  
                      justify-center mt-12 space-y-4 md:space-y-0 md:space-x-6">
-          <p className="text-[32px] text-center text-[#0000CD] font-impact max-w-xl">
+          <p className="text-[32px] text-center text-[#0000CD] font-alfa max-w-xl">
             Entre em contato e descubra como podemos levar sua presença digital
             ao próximo nível!
           </p>
