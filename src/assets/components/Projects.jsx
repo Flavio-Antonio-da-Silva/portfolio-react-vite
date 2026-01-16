@@ -67,6 +67,14 @@ const projectsData = [
     link: "https://projeto-2-tan-eight.vercel.app/",
     tags: ["React", "GSAP"],
   },
+  {
+    title: "Clínicas Odontôlogicas",
+    emoji: "🦷",
+    image: "/imagens/mkodonto_card.png",
+    description: "Site voltado a pretação de serviços a odontôlogistas do Rio de Janeiro",
+    link: "https://mkodonto.vercel.app/",
+    tags: ["React", "Tailwind"],
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -123,7 +131,7 @@ function ProjectCard({ project }) {
         />
       </div>
 
-      <p className="text-sm text-blue-600/80 font-bold dark:text-gray-300 mb-3 leading-relaxed">
+      <p className="text-sm text-[#00FFFF] font-bold dark:text-gray-300 mb-3 leading-relaxed">
         {project.description}
       </p>
 
