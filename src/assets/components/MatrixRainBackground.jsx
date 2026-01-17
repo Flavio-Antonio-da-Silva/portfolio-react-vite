@@ -1,5 +1,5 @@
-import React, { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { useRef, useMemo, useEffect, useState } from "react";
+import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import { gsap } from "gsap";
 
@@ -21,9 +21,8 @@ const COLORS = {
   },
 };
 
-function MatrixColumn({ x, speed, delay, textColor }) {
+function MatrixColumn({ x, speed, delay, textColor, count }) {
   const groupRef = useRef();
-  const count = 18;
 
   useFrame((_, delta) => {
     if (!groupRef.current) return;
@@ -53,7 +52,7 @@ function MatrixColumn({ x, speed, delay, textColor }) {
         </Text>
       );
     });
-  }, [textColor]);
+  }, [textColor, count]);
 
   return (
     <group ref={groupRef} position={[x, 18 + delay, 0]}>
@@ -62,8 +61,37 @@ function MatrixColumn({ x, speed, delay, textColor }) {
   );
 }
 
-function MatrixRain({ speedMultiplier = 1, textColor, followRef }) {
-  const columns = 38;
+function useResponsiveConfig() {
+  const [config, setConfig] = useState({
+    isMobile: false,
+    columns: 32,
+    charCount: 18,
+    parallaxStrength: 2.2,
+  });
+
+  useEffect(() => {
+    const update = () => {
+      const width = window.innerWidth;
+      const isMobile = width < 768;
+
+      setConfig({
+        isMobile,
+        columns: isMobile ? 18 : 38,
+        charCount: isMobile ? 12 : 18,
+        parallaxStrength: isMobile ? 1.2 : 2.2,
+      });
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return config;
+}
+
+function MatrixRain({ speedMultiplier, textColor, followRef, config }) {
+  const { columns, charCount } = config;
 
   return (
     <group ref={followRef}>
@@ -79,6 +107,7 @@ function MatrixRain({ speedMultiplier = 1, textColor, followRef }) {
             speed={speed}
             delay={delay}
             textColor={textColor}
+            count={charCount}
           />
         );
       })}
@@ -92,29 +121,42 @@ export default function MatrixRainBackground({
 }) {
   const palette = isDarkMode ? COLORS.dark : COLORS.light;
   const followGroupRef = useRef();
+  const config = useResponsiveConfig();
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const move = (xNorm, yNorm) => {
       if (!followGroupRef.current) return;
 
-      // Normaliza mouse entre -1 e 1
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-      // Intensidade do deslocamento (sensação de parallax)
-      const strength = 2.2;
-
       gsap.to(followGroupRef.current.position, {
-        x: x * strength,
-        y: y * strength,
+        x: xNorm * config.parallaxStrength,
+        y: yNorm * config.parallaxStrength,
         duration: 0.6,
         ease: "power3.out",
       });
     };
 
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.clientY / window.innerHeight) * 2 + 1;
+      move(x, y);
+    };
+
+    const handleTouchMove = (e) => {
+      if (!e.touches[0]) return;
+      const touch = e.touches[0];
+      const x = (touch.clientX / window.innerWidth) * 2 - 1;
+      const y = -(touch.clientY / window.innerHeight) * 2 + 1;
+      move(x, y);
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [config.parallaxStrength]);
 
   return (
     <div
@@ -126,13 +168,17 @@ export default function MatrixRainBackground({
         transition: "background 1.8s ease",
       }}
     >
-      <Canvas camera={{ position: [0, 0, 22], fov: 60 }}>
+      <Canvas
+        dpr={[1, config.isMobile ? 1.5 : 2]}
+        camera={{ position: [0, 0, 22], fov: 60 }}
+      >
         <color attach="background" args={[palette.canvas]} />
 
         <MatrixRain
           speedMultiplier={speed}
           textColor={palette.text}
           followRef={followGroupRef}
+          config={config}
         />
       </Canvas>
     </div>
