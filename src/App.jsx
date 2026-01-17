@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
@@ -14,37 +13,40 @@ import MatrixRainBackground from "./assets/components/MatrixRainBackground";
 import ThreeDText from "./assets/components/ThreeDText";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setIsDarkMode(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Inicialização preguiçosa para evitar flicker no mobile
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("theme");
+      return saved ? saved === "dark" : true; // Padrão dark
     }
-  }, []);
+    return true;
+  });
 
   useEffect(() => {
     const html = document.documentElement;
-    html.classList.add("transition-colors", "duration-700");
-    html.setAttribute("data-theme", isDarkMode ? "dark" : "light");
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    if (isDarkMode) {
+      html.classList.add("dark");
+      html.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      html.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
   }, [isDarkMode]);
 
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
   return (
-    <div className="relative min-h-[100svh] text-[#5819c2] dark:text-violet-300">
+    // Removi o pointer-events-none do container pai para permitir que o Matrix receba o touchmove
+    <div className="relative min-h-screen w-full overflow-x-hidden text-[#5819c2] dark:text-violet-300">
       
-      {/* 🌌 Background isolado do layout */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <MatrixRainBackground isDarkMode={isDarkMode} speed={0.12} />
-      </div>
+      <MatrixRainBackground isDarkMode={isDarkMode} speed={0.15} />
 
-      {/* Conteúdo */}
-      <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+      <div className="relative z-10">
+        <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
-      <div className="w-[95vw] mx-auto relative z-10">
-        <main className="pt-20 md:pt-28 flex flex-col items-center text-center">
+        <main className="w-[95vw] mx-auto pt-20 md:pt-28 flex flex-col items-center text-center">
           <div className="w-full max-w-4xl h-[180px] md:h-[220px] mb-12 font-alfa">
             <ThreeDText
               text="Desenvolvedor: Flávio Antônio!"
@@ -59,9 +61,8 @@ function App() {
           <Contato />
           <Contactos />
         </main>
+        <Footer />
       </div>
-
-      <Footer />
     </div>
   );
 }
