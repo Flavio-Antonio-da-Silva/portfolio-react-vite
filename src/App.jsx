@@ -16,7 +16,6 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme");
-      // Se não houver nada salvo, o padrão será Dark (true)
       return saved ? saved === "dark" : true;
     }
     return true;
@@ -24,43 +23,31 @@ function App() {
 
   useEffect(() => {
     const html = document.documentElement;
-    const body = document.body;
-
-    // CORES DE FUNDO HARDCODED PARA EVITAR O BRANCO NO MOBILE
-    const bgDark = "#05080d";
-    const bgLight = "#C0C0C0";
-    const currentColor = isDarkMode ? bgDark : bgLight;
-
-    // Aplica a cor diretamente no HTML e BODY
-    html.style.backgroundColor = currentColor;
-    body.style.backgroundColor = currentColor;
     
     if (isDarkMode) {
       html.classList.add("dark");
       html.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", "dark");
     } else {
       html.classList.remove("dark");
       html.setAttribute("data-theme", "light");
-      localStorage.setItem("theme", "light");
     }
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   }, [isDarkMode]);
 
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
   return (
-    // 'bg-transparent' é crucial para deixar o MatrixRain aparecer atrás
-    <div className="relative min-h-screen w-full bg-transparent text-[#5819c2] dark:text-violet-300">
-      
-      {/* Componente de Background fixo no fundo */}
-      <MatrixRainBackground isDarkMode={isDarkMode} speed={0.15} />
+    <div className="relative w-full min-h-screen overflow-x-hidden">
+      {/* Background Matrix com as cores solicitadas e suporte mobile */}
+      <MatrixRainBackground isDarkMode={isDarkMode} speed={0.18} />
 
-      {/* Conteúdo com z-index maior para ficar por cima da chuva */}
-      <div className="relative z-10 w-full">
+      {/* Conteúdo com z-10 para ficar acima do canvas */}
+      <div className="relative z-10 w-full min-h-screen bg-transparent text-[#5819c2] dark:text-violet-300">
         <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
-        <main className="w-[95vw] mx-auto pt-20 md:pt-28 flex flex-col items-center text-center">
-          <div className="w-full max-w-4xl h-[150px] md:h-[220px] mb-8 font-alfa">
+        <main className="w-[95vw] max-w-6xl mx-auto pt-20 md:pt-28 pb-20 flex flex-col items-center text-center">
+          {/* Container do texto 3D */}
+          <div className="w-full max-w-4xl h-[150px] md:h-[280px] mb-12 font-alfa">
             <ThreeDText
               text="Desenvolvedor: Flávio Antônio!"
               color={isDarkMode ? "#e8fde6" : "#1e293b"}
@@ -74,6 +61,7 @@ function App() {
           <Contato />
           <Contactos />
         </main>
+
         <Footer />
       </div>
     </div>
