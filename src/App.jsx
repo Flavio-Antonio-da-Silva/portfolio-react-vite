@@ -33,13 +33,17 @@ function App() {
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
   return (
-    <div className="text-[#5819c2] dark:text-violet-300 min-h-screen relative">
+    <div className="relative min-h-[100svh] text-[#5819c2] dark:text-violet-300">
+      
+      {/* 🌌 Background isolado do layout */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <MatrixRainBackground isDarkMode={isDarkMode} speed={0.12} />
+      </div>
+
+      {/* Conteúdo */}
       <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
-      {/* ⚠️ Use EXATAMENTE este nome */}
-      <MatrixRainBackground isDarkMode={isDarkMode} speed={0.12} />
-
-      <div className="w-[95vw] mx-auto overflow-hidden relative z-10">
+      <div className="w-[95vw] mx-auto relative z-10">
         <main className="pt-20 md:pt-28 flex flex-col items-center text-center">
           <div className="w-full max-w-4xl h-[180px] md:h-[220px] mb-12 font-alfa">
             <ThreeDText
@@ -52,7 +56,7 @@ function App() {
           <Services />
           <Projects />
           <Skills />
-          <Contato/>
+          <Contato />
           <Contactos />
         </main>
       </div>
