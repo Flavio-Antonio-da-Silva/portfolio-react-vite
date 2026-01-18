@@ -1,39 +1,53 @@
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+  // Configuração de CORS para evitar erros de origem
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Apenas POST é permitido' });
   }
 
   try {
-    const { name, email, message } = req.body;
+    // Em módulos ESM na Vercel, às vezes é necessário ler o body manualmente 
+    // ou garantir que ele foi parseado.
+    const body = req.body;
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: "Dados incompletos" });
+    if (!body || !body.email) {
+      return res.status(400).json({ error: 'Dados do formulário não recebidos corretamente' });
     }
+
+    const { name, email, message } = body;
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify({
         access_key: process.env.WEB3FORMS_KEY,
-        subject: "Novo Lead - Portfolio",
-        from_name: "Portfolio Website",
         name,
         email,
         message,
+        subject: "Novo Lead - Portfolio",
+        from_name: "Portfolio Flávio",
       }),
     });
 
     const data = await response.json();
 
-    if (!data.success) {
-      return res.status(500).json({ error: data.message });
+    if (data.success) {
+      return res.status(200).json({ success: true });
+    } else {
+      return res.status(400).json({ error: data.message || 'Erro no Web3Forms' });
     }
-
-    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("API Contact Error:", error);
-    return res.status(500).json({ error: "Erro interno no servidor" });
+    console.error("Erro na API:", error);
+    return res.status(500).json({ error: 'Erro interno no servidor' });
   }
 }
