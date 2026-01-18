@@ -34,15 +34,16 @@ const Contato = () => {
       setResult("Mensagem enviada com sucesso 🚀");
       event.target.reset();
     } catch (err) {
-      console.error(err);
-      setResult("Erro ao enviar. Tente novamente em instantes.");
+      console.error("Erro no envio:", err);
+      setResult(err.message || "Erro ao enviar. Tente novamente em instantes.");
     }
   };
 
   return (
     <section
       id="contato"
-      className="py-20 mb-8 rounded-md bg-gradient-to-t from-blue-600 via-blue-500 to-blue-100"
+      /* Adicionado mb-20 para separar da section de baixo e my-10 para respiro */
+      className="py-20 my-10 mb-20 rounded-3xl bg-gradient-to-t from-blue-600 via-blue-500 to-blue-100"
     >
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -56,7 +57,7 @@ const Contato = () => {
             {/* Wrapper para centralizar somente o botão */}
             <div className="flex flex-col items-center gap-4">
               <a
-                href="https://wa.me/21977496651?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20MK%20Dental%20para%20minha%20cl%C3%ADnica."
+                href="https://wa.me/21977496651?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-green-500 text-white font-bold px-6 py-3 rounded-xl hover:bg-green-600 transition-all shadow-md shadow-green-200 active:scale-95 w-fit"
@@ -74,14 +75,9 @@ const Contato = () => {
           {/* Lado Direito: Formulário */}
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-2xl border border-slate-100">
             <form onSubmit={onSubmit} className="space-y-6">
-              {/* Metadados ocultos */}
-              <input
-                type="hidden"
-                name="subject"
-                value="Novo Lead: Solicitação MK Dental RJ"
-              />
-              <input type="hidden" name="from_name" value="MK Dental Web" />
-              <input type="hidden" name="replyto" value="%email%" />
+              {/* Metadados ocultos para o Web3Forms */}
+              <input type="hidden" name="subject" value="Novo Lead - Portfolio" />
+              <input type="hidden" name="from_name" value="Portfolio Flávio" />
 
               <div>
                 <label className="block text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
@@ -92,7 +88,7 @@ const Contato = () => {
                   name="name"
                   required
                   placeholder="Ex: Flávio Antonio Silva"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-slate-900"
                 />
               </div>
 
@@ -105,7 +101,7 @@ const Contato = () => {
                   name="email"
                   required
                   placeholder="exemplo@email.com"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-slate-900"
                 />
               </div>
 
@@ -117,8 +113,8 @@ const Contato = () => {
                   name="message"
                   rows="4"
                   required
-                  placeholder="Fale sobre seu projeto ou sua necessidade e como pederei ajudá-lo!..."
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-200 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none resize-none"
+                  placeholder="Fale sobre seu projeto..."
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-200 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none resize-none text-slate-900"
                 ></textarea>
               </div>
 
@@ -126,7 +122,7 @@ const Contato = () => {
                 type="submit"
                 className="w-full bg-blue-600 text-white font-black py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 active:scale-[0.98] text-lg uppercase tracking-wider"
               >
-                Enviar solicitação de orçamento grátis
+                Enviar solicitação agora
               </button>
 
               {result && (
@@ -134,7 +130,7 @@ const Contato = () => {
                   className={`text-center p-3 rounded-lg font-bold animate-pulse ${
                     result.includes("sucesso")
                       ? "bg-green-50 text-green-700"
-                      : "bg-blue-50 text-blue-700"
+                      : "bg-red-50 text-red-700"
                   }`}
                 >
                   {result}
