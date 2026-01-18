@@ -63,7 +63,7 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-400 via-blue-500 via-blue-600  to-blue-700
+      className="w-full py-30 mb-16 px-4 bg-gradient-to-r from-blue-400 via-blue-500 via-blue-600  to-blue-700
                  dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
                  transition-colors duration-700 transform transition-all"
     >

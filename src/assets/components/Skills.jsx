@@ -22,7 +22,7 @@ export default function Skills() {
   return (
     <section 
       id="habilidades" 
-      className="w-full py-20 px-4 bg-gradient-to-r from-blue-400   
+      className="w-full mb-24 py-20 px-4 bg-gradient-to-r from-blue-400   
                  dark:bg-gray-900 text-gray-900 dark:text-gray-100 
                  transform transition-all duration-700 ease-out 
                  hover:shadow-2xl hover:shadow-indigo-500/25 

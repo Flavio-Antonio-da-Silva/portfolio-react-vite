@@ -42,7 +42,7 @@ const Contato = () => {
   return (
     <section
       id="contato"
-      className="py-28 rounded-md bg-gradient-to-t from-blue-600 via-blue-500 to-blue-100"
+      className="py-20 mb-8 rounded-md bg-gradient-to-t from-blue-600 via-blue-500 to-blue-100"
     >
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

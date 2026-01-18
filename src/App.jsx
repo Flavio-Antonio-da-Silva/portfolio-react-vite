@@ -4,7 +4,7 @@ import "./App.css";
 import Navbar from "./assets/components/Navbar";
 import AboutMe from "./assets/components/AboutMe";
 import Services from "./assets/components/Services";
-import Contactos from "./assets/components/Contactos";
+import RedesSociais from "./assets/components/RedesSociais";
 import Skills from "./assets/components/Skills";
 import Projects from "./assets/components/Projects";
 import Contato from "./assets/components/Contato";
@@ -59,7 +59,7 @@ function App() {
           <Projects />
           <Skills />
           <Contato />
-          <Contactos />
+          <RedesSociais />
         </main>
 
         <Footer />
