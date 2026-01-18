@@ -9,12 +9,9 @@ const Contato = () => {
     setResult("Enviando...");
 
     const formData = new FormData(event.target);
-
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+    
+    // Captura todos os campos do formulário de forma robusta
+    const payload = Object.fromEntries(formData.entries());
 
     try {
       const response = await fetch("/api/contact", {
@@ -42,7 +39,6 @@ const Contato = () => {
   return (
     <section
       id="contato"
-      /* Adicionado mb-20 para separar da section de baixo e my-10 para respiro */
       className="py-20 my-10 mb-20 rounded-3xl bg-gradient-to-t from-blue-600 via-blue-500 to-blue-100"
     >
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -54,7 +50,6 @@ const Contato = () => {
               Clique abaixo para conversarmos e eu saber como poderei te ajudar
             </h2>
 
-            {/* Wrapper para centralizar somente o botão */}
             <div className="flex flex-col items-center gap-4">
               <a
                 href="https://wa.me/21977496651?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços."
@@ -75,7 +70,7 @@ const Contato = () => {
           {/* Lado Direito: Formulário */}
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-2xl border border-slate-100">
             <form onSubmit={onSubmit} className="space-y-6">
-              {/* Metadados ocultos para o Web3Forms */}
+              {/* Metadados ocultos */}
               <input type="hidden" name="subject" value="Novo Lead - Portfolio" />
               <input type="hidden" name="from_name" value="Portfolio Flávio" />
 
@@ -138,7 +133,6 @@ const Contato = () => {
               )}
             </form>
           </div>
-
         </div>
       </div>
     </section>
