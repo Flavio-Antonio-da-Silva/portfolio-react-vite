@@ -35,8 +35,16 @@ export default function AboutMe() {
           );
           timeline.fromTo(
             textRef.current,
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" },
+            { y: 50, opacity: 0, rotationX: -90 },
+            { 
+              y: 0, 
+              opacity: 1, 
+              rotationX: 0,
+              duration: 1.2, 
+              ease: "power3.out",
+              transformOrigin: "center center",
+              perspective: 1200
+            },
             "<0.3"
           );
         }
@@ -49,8 +57,16 @@ export default function AboutMe() {
           );
           timeline.fromTo(
             textRef.current,
-            { y: 30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+            { y: 30, opacity: 0, rotationX: -90 },
+            { 
+              y: 0, 
+              opacity: 1, 
+              rotationX: 0,
+              duration: 1, 
+              ease: "power2.out",
+              transformOrigin: "center center",
+              perspective: 1200
+            },
             "<0.2"
           );
         }
@@ -63,53 +79,42 @@ export default function AboutMe() {
   return (
     <section
       id="sobre-mim"
-      className="w-full py-30 mb-16 px-4 bg-gradient-to-r from-blue-400 via-blue-500 via-blue-600  to-blue-700
-                 dark:from-gray-800 dark:to-gray-900 rounded-md mb-8
-                 transition-colors duration-700 transform transition-all"
+      className="
+        w-full pb-0 md:pb-40 pt-0 mb-0 rounded-md
+        bg-[url('/imagens/foto_perfil_pot.png')]
+        bg-contain bg-right bg-no-repeat
+      
+
+        relative overflow-hidden
+
+        before:absolute before:inset-0
+        before:z-0
+        transition-all duration-200
+      "
     >
       <div className="max-w-auto mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-        {/* IMAGEM — agora aparece antes no mobile */}
-        <div className="w-full flex justify-center md:justify-end order-1 md:order-2">
-          <img
-            ref={imgRef}
-            src="/imagens/foto_perfil_pot.png"
-            alt="Foto de Flávio"
-            className="
-              w-[95%]
-              sm:w-[85%]
-              md:w-[100%]
-              lg:max-w-[1068px]
-              lg:h-[568px]
-              object-contain
-              rounded-2xl
-              transition-transform
-              duration-200
-            "
-            loading="lazy"
-          />
-        </div>
-
         {/* TEXTO — agora aparece abaixo no mobile */}
         <div
           ref={textRef}
-          className="font-[Domine] dark:text-[#F0FFFF] w-full pr-0 md:pr-8 text-[#4B0082]  
-           order-2 md:order-1"
+          className="font-[Domine] dark:text-[#0B083D] text-[#0B083D] w-full pr-0 md:pr-8 
+           order-2 md:order-1 before:absolute before:inset-0
+           bg-gradient-to-r from-blue-400/80 via-blue-500/80 p-4 rounded-md to-blue-700/80
+           [perspective:1200px]"
         >
           <h2 className="text-5xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center 
                          md:text-left text-shadow-lg text-shadow-black/90">
             Sobre mim
           </h2>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-4  text-center md:text-left">
+          <p className="text-lg md:text-xl leading-relaxed mb-4 text-center md:text-left">
             Oieee, prazer em conhecê-lo! Muito bom ter você por aqui. Me chamo{" "}
-            <strong className="font-sans text-[#470552] dark:text-indigo-300">
+            <strong className="font-sans text-[#3F4F52] dark:text-indigo-300">
               Flávio Antônio
             </strong>
             , sou natural do Rio de Janeiro. Comecei muito cedo no mundo da tecnologia.
           </p>
 
-          <p className="text-lg md:text-xl leading-relaxed mb-4  text-center md:text-left">
+          <p className="text-lg md:text-xl leading-relaxed mb-4 text-center md:text-left">
             Associei minha paixão por tecnologia à minha antiga função como técnico contábil,
             criando sites e aplicações web para otimizar meu desempenho profissional.
             Nos últimos dois anos, migrei minha carreira para o desenvolvimento web,
@@ -122,7 +127,6 @@ export default function AboutMe() {
             Vamos juntos nessa trajetória 😉?
           </p>
         </div>
-
       </div>
     </section>
   );

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import Navbar from "./assets/components/Navbar";
-import AboutMe from "./assets/components/AboutMe";
-import Services from "./assets/components/Services";
-import RedesSociais from "./assets/components/RedesSociais";
-import Skills from "./assets/components/Skills";
-import Projects from "./assets/components/Projects";
-import Contato from "./assets/components/Contato";
-import Footer from "./assets/components/Footer";
-import MatrixRainBackground from "./assets/components/MatrixRainBackground";
-import ThreeDText from "./assets/components/ThreeDText";
+import Navbar from "./components/Navbar";
+import AboutMe from "./components/AboutMe";
+import Services from "./components/Services";
+import RedesSociais from "./components/RedesSociais";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contato from "./components/Contato";
+import Footer from "./components/Footer";
+import MatrixRainBackground from "./components/MatrixRainBackground";
+import ThreeDText from "./components/ThreeDText";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -37,23 +37,27 @@ function App() {
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden">
+    <div className="relative  w-full min-h-screen overflow-x-hidden">
       {/* Background Matrix com as cores solicitadas e suporte mobile */}
-      <MatrixRainBackground isDarkMode={isDarkMode} speed={0.18} />
+      <MatrixRainBackground className="" isDarkMode={isDarkMode} speed={0.18} />
 
       {/* Conteúdo com z-10 para ficar acima do canvas */}
       <div className="relative z-10 w-full min-h-screen bg-transparent text-[#5819c2] dark:text-violet-300">
         <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-
-        <main className="w-[95vw] max-w-6xl mx-auto pt-20 md:pt-28 pb-20 flex flex-col items-center text-center">
-          {/* Container do texto 3D */}
-          <div className="w-full max-w-4xl h-[150px] md:h-[280px] mb-12 font-alfa">
-            <ThreeDText
-              text="Desenvolvedor: Flávio Antônio!"
+               
+               {/*Deixei  fora da main pra ocupar toda largura*/ }
+         <ThreeDText
+              className="md:w[10vw]"
+              text="Flávio Desenvolvedor!"
               color={isDarkMode ? "#e8fde6" : "#1e293b"}
             />
-          </div>
 
+        <main className="w-[90vw] min-h-dvh md:w-[100vw] lg:w-[80vw] xl:w-[70vw] md:py-0 mx-auto max-w-auto pt-20 md:pt-0 lg:pt-0 xl:pt-0 pb-20 flex flex-col items-center text-center">
+          {/* Container do texto 3D — clipado para evitar overflow */}
+          <div className="w-full md:w-full  max-w-full  ml-0 mr-0 mb-0 mt-4 font-alfa flex items-center justify-center overflow-hidden rounded-xl shadow-lg ">
+           
+          </div>
+          
           <AboutMe />
           <Services />
           <Projects />

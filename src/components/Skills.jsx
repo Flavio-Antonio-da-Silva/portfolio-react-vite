@@ -22,30 +22,48 @@ export default function Skills() {
   return (
     <section 
       id="habilidades" 
-      className="w-full mb-24 py-20 px-4 bg-gradient-to-r from-blue-400   
-                 dark:bg-gray-900 text-gray-900 dark:text-gray-100 
+      className="relative w-full mb-24 py-20 px-4
+                 text-gray-900 dark:text-gray-100 
                  transform transition-all duration-700 ease-out 
                  hover:shadow-2xl hover:shadow-indigo-500/25 
-                 group rounded-md mb-8" // Adicionei rounded-md e mb-8 para consistência
+                 group rounded-md overflow-hidden"
     >
-      <div className="container mx-auto">
+
+      {/* VIDEO BACKGROUND */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source src="/bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
+
+      {/* CONTENT */}
+      <div className="relative z-20 container mx-auto">
         <h2 className="text-3xl md:text-4xl text-gray-200 font-bold tracking-tight mb-10 text-center text-shadow-lg text-shadow-black/90">
           Minhas Habilidades
         </h2>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {skills.map((skill, index) => (
             <div
               key={index}
               className="relative p-6 rounded-lg shadow-md 
-                         bg-gradient-to-r from-indigo-500 to-purple-700 text-white // Gradiente para cada item
+                         bg-gradient-to-r from-indigo-500 to-purple-700 text-white
                          transform transition-all duration-300 ease-out 
-                         hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 // Sombra e escala no hover
+                         hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50
                          flex flex-col items-center justify-center text-center
-                         group-hover:rotate-0 group-hover:scale-100" // Resetar rotação e escala no hover do grupo
+                         group-hover:rotate-0 group-hover:scale-100"
             >
               {skill.icon}
               <p className="text-xl font-semibold mt-2">{skill.name}</p>
-              {/* Elementos de fundo para o efeito visual, se desejar */}
+
               <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></div>
             </div>
           ))}

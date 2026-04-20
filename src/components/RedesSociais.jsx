@@ -5,7 +5,7 @@ export default function Contactos() {
   return (
     <section 
       id="RedesSociais"
-      className="w-full rounded-lg bg-gray-900 dark:bg-gray-800 text-blue-500 dark:text-gray-100 py-20"
+      className="w-full w-[100vw] rounded-lg bg-gray-900 dark:bg-gray-800 text-blue-500 dark:text-gray-100 py-20"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-10 text-shadow-lg text-shadow-white/90">
