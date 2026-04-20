@@ -12,7 +12,7 @@ export default function Navbar({ toggleDarkMode, isDarkMode }) {
   const darkModeBtnMobileRef = useRef(null);
   const darkModeBtnDesktopRef = useRef(null);
 
-  const navIds = ["sobre-mim", "servicos", "projetos", "habilidades", "contato"];
+  const navIds = ["sobre-mim", "servicos", "projects", "habilidades", "contato"];
 
   const toggleMenu = () => setIsOpen((v) => !v);
 
