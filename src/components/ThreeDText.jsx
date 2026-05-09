@@ -6,60 +6,39 @@ import { Suspense } from "react";
 import gsap from "gsap";
 
 /**
- * ThreeDTextContent — Texto 3D volumétrico com rotação oscilante no eixo Z
- * Posição fixa em x=0, y=0 — nunca sai do campo visual
- * Rotação: -130° a +130° em loop contínuo com câmera móvel acompanhando
+ * ThreeDTextContent — Texto 3D volumétrico com oscilação suave no eixo Z
+ * Posição centralizada: x=0, y=0
+ * Movimento: oscila entre -0.5 e +0.5 no eixo Z em loop contínuo
+ * Responsivo: ajusta tamanho e espaçamento para mobile
  * Memoizado para evitar re-renders desnecessários
  */
-const ThreeDTextContent = memo(({ text, color }) => {
+const ThreeDTextContent = memo(({ text, color, isMobile }) => {
   const meshRef = useRef();
-  const rotationRef = useRef(0);
+  const zPositionRef = useRef(0);
   const directionRef = useRef(1);
 
-  // Bounds de clipping para restringir ao viewport
-  const BOUNDS = {
-    x: { min: -2.0, max: 2.0 },
-    y: { min: -1.5, max: 1.5 },
-    z: { min: 2.5, max: 7.0 }
-  };
+  // Ajusta tamanho e espaçamento responsivamente para mobile
+  const responsiveSize = isMobile ? 1.2 * 0.9 : 1.2;
+  const responsiveLetterSpacing = isMobile ? 0.03 : 0.08;
 
-  /**
-   * Função auxiliar para clampar valores dentro dos bounds
-   */
-  const clampToBounds = (value, min, max) => {
-    return Math.max(min, Math.min(max, value));
-  };
-
-  // Rotação oscilante no eixo Z: -130° a +130° em loop
+  // Oscilação suave no eixo Z: -0.5 a +0.5
   useFrame((state, delta) => {
     if (meshRef.current) {
-      const maxRotation = (130 * Math.PI) / 180; // 130° em radianos
-      const speed = 0.25; // velocidade da oscilação
+      const maxZPosition = 0.5;
+      const speed = 0.8; // velocidade da oscilação
 
-      rotationRef.current += directionRef.current * speed * delta;
+      zPositionRef.current += directionRef.current * speed * delta;
 
       // Inverte direção ao atingir limites
-      if (rotationRef.current >= maxRotation) {
-        rotationRef.current = maxRotation;
+      if (zPositionRef.current >= maxZPosition) {
+        zPositionRef.current = maxZPosition;
         directionRef.current = -1;
-      } else if (rotationRef.current <= -maxRotation) {
-        rotationRef.current = -maxRotation;
+      } else if (zPositionRef.current <= -maxZPosition) {
+        zPositionRef.current = -maxZPosition;
         directionRef.current = 1;
       }
 
-      meshRef.current.rotation.z = rotationRef.current;
-
-      // Câmera com movimento confinado aos bounds
-      const targetX = Math.sin(rotationRef.current) * 3.0; // Amplitude reduzida
-      const targetY = Math.cos(rotationRef.current) * 1.2; // Amplitude reduzida
-      const targetZ = 6 + Math.cos(rotationRef.current) * 1.5; // Amplitude reduzida
-
-      // Aplicar clamping para garantir permanência dentro dos bounds
-      state.camera.position.x = clampToBounds(targetX, BOUNDS.x.min, BOUNDS.x.max);
-      state.camera.position.y = clampToBounds(targetY, BOUNDS.y.min, BOUNDS.y.max);
-      state.camera.position.z = clampToBounds(targetZ, BOUNDS.z.min, BOUNDS.z.max);
-
-      state.camera.lookAt(0, 0, 0);
+      meshRef.current.position.z = zPositionRef.current;
     }
   });
 
@@ -98,7 +77,7 @@ const ThreeDTextContent = memo(({ text, color }) => {
         >
           <Text3D
             font="/fonts/Chonburi-Regular.json"
-            size={1.2}
+            size={responsiveSize}
             height={0.4}
             curveSegments={4}
             bevelEnabled
@@ -106,7 +85,7 @@ const ThreeDTextContent = memo(({ text, color }) => {
             bevelSize={0.015}
             bevelOffset={0}
             bevelSegments={3}
-            letterSpacing={0.08}
+            letterSpacing={responsiveLetterSpacing}
             castShadow
             receiveShadow
           >
@@ -132,7 +111,7 @@ ThreeDTextContent.displayName = "ThreeDTextContent";
  * CanvasContent — Componente que contém a lógica do Canvas
  * useThree() é chamado aqui, DENTRO do Canvas
  */
-function CanvasContent({ color }) {
+function CanvasContent({ color, isMobile }) {
   const { gl } = useThree();
 
   // Configurar output color space para linear (PBR)
@@ -142,10 +121,15 @@ function CanvasContent({ color }) {
     }
   }, [gl]);
 
+  // FOV muito mais aberto no mobile para enquadrar bem
+  const responsiveFOV = isMobile ? 100 : 50;
+  // Câmera mais distante no mobile
+  const responsiveCameraZ = isMobile ? 12 : 8;
+
   return (
     <Suspense fallback={null}>
-      {/* Câmera perspectiva controlada pelo useFrame */}
-      <PerspectiveCamera makeDefault position={[0, -10, 8]} fov={140} />
+      {/* Câmera perspectiva responsiva */}
+      <PerspectiveCamera makeDefault position={[0, 0, responsiveCameraZ]} fov={responsiveFOV} />
 
       {/* Lighting Setup PBR */}
       <ambientLight intensity={0.5} />
@@ -170,32 +154,58 @@ function CanvasContent({ color }) {
 
 /**
  * ThreeDText — Wrapper principal com Canvas otimizado
- * Renderiza texto 3D volumétrico fixo em x=0, y=0, oscilando -130° a +130° no eixo Z
- * Câmera acompanha dinamicamente confinada aos bounds do container
- * Sem bordas — padrão consistente com VolumetricTextHero
+ * Renderiza texto 3D volumétrico centralizado, oscilando suavemente entre -0.5 e +0.5 no eixo Z
+ * Responsivo: 90% da largura no mobile, FOV e câmera dinâmicos
+ * Sem vazamento lateral — padrão consistente com VolumetricTextHero
  */
 export default function ThreeDText({ 
   text = "Sobre", 
   color = "#00FFFF",
   height = "400px"
 }) {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    // Detecta se é mobile (viewport < 768px)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="w-full h-full overflow-hidden" style={{ height }}>
-      <Canvas
-        camera={{ position: [0, 0, 8], fov: 50 }}
-        style={{ width: "100%", height: "100%" }}
-        className="rounded-lg"
-        gl={{ 
-          antialias: true,
-          alpha: true,
-          dpr: [1, 2],
-          shadowMap: { enabled: true }
+    <div 
+      className="flex items-center justify-center w-full md:w-full"
+      style={{ 
+        height,
+        maxWidth: "100%"
+      }}
+    >
+      <div 
+        className="w-11/12 md:w-full overflow-hidden rounded-lg" 
+        style={{ 
+          height: "100%"
         }}
-        shadows
       >
-        <CanvasContent color={color} />
-        <ThreeDTextContent text={text} color={color} />
-      </Canvas>
+        <Canvas
+          camera={{ position: [0, 0, 8], fov: 50 }}
+          style={{ width: "100%", height: "100%" }}
+          className="rounded-lg"
+          gl={{ 
+            antialias: true,
+            alpha: true,
+            dpr: [1, 2],
+            shadowMap: { enabled: true }
+          }}
+          shadows
+        >
+          <CanvasContent color={color} isMobile={isMobile} />
+          <ThreeDTextContent text={text} color={color} isMobile={isMobile} />
+        </Canvas>
+      </div>
     </div>
   );
 }

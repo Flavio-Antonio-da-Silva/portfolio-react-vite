@@ -5,9 +5,11 @@ import { Text3D, Center, Environment, PerspectiveCamera } from "@react-three/dre
 import { Suspense } from "react";
 
 /**
- * VolumetricTextCore — Núcleo do texto 3D com rotação sincronizada
- * Movimento sincronizado: 180° no eixo X + 120° no eixo Z
- * Câmera orbita com restrição de bounds ao container
+ * VolumetricTextCore — Núcleo do texto 3D com oscilação suave no eixo Z
+ * Posição centralizada: x=0, y=0
+ * Movimento: oscila entre -1.0 e +1.0 no eixo Z em loop contínuo
+ * Responsivo: ajusta tamanho para mobile (até 90% da largura)
+ * Câmera fixa para melhor controle visual
  * Memoizado para evitar re-renders desnecessários
  */
 const VolumetricTextCore = React.memo(({ 
@@ -17,63 +19,47 @@ const VolumetricTextCore = React.memo(({
   depth = 0.3,
   color = "#00FFFF",
   roughness = 0.4,
-  metalness = 0.7
+  metalness = 0.7,
+  isMobile = false
 }) => {
   const meshRef = useRef(null);
-  const timeRef = useRef(0);
+  const zPositionRef = useRef(0);
+  const directionRef = useRef(1);
 
-  // Bounds de clipping para restringir ao viewport
-  const BOUNDS = {
-    x: { min: -2.5, max: 2.5 },
-    y: { min: -2.0, max: 2.0 },
-    z: { min: -2.5, max: 3.5 }
-  };
-
-  /**
-   * Função auxiliar para clampar valores dentro dos bounds
-   */
-  const clampToBounds = (value, min, max) => {
-    return Math.max(min, Math.min(max, value));
-  };
+  // Ajusta tamanho responsivamente para mobile
+  const responsiveSize = isMobile ? size * 0.5 : size;
 
   /**
    * Loop de animação — executa a cada frame
-   * Rotação sincronizada em onda senoidal + câmera dinâmica confinada
+   * Oscilação suave no eixo Z: -1.0 a +1.0
    */
   useFrame((state, delta) => {
     if (meshRef.current) {
-      timeRef.current += delta * 0.25; // Controla velocidade global
+      const maxZPosition = 1.0;
+      const speed = 0.8; // velocidade da oscilação
 
-      // Rotação X: 180° (π radianos) indo e voltando
-      meshRef.current.rotation.x = Math.sin(timeRef.current) * Math.PI;
+      zPositionRef.current += directionRef.current * speed * delta;
 
-      // Rotação Z: 120° (2.09 radianos) indo e voltando
-      meshRef.current.rotation.z = Math.sin(timeRef.current * 0.67) * (Math.PI * 2 / 3);
+      // Inverte direção ao atingir limites
+      if (zPositionRef.current >= maxZPosition) {
+        zPositionRef.current = maxZPosition;
+        directionRef.current = -1;
+      } else if (zPositionRef.current <= -maxZPosition) {
+        zPositionRef.current = -maxZPosition;
+        directionRef.current = 1;
+      }
 
-      // Rotação Y suave adicional para dinamismo
-      meshRef.current.rotation.y = Math.cos(timeRef.current * 0.3) * (Math.PI / 6);
-
-      // Câmera com movimento confinado aos bounds
-      const targetX = Math.sin(timeRef.current) * 2.0; // Amplitude reduzida
-      const targetY = Math.cos(timeRef.current * 0.67) * 1.5; // Amplitude reduzida
-      const targetZ = 5 + Math.sin(timeRef.current * 0.5) * 1.2; // Amplitude reduzida
-
-      // Aplicar clamping para garantir permanência dentro dos bounds
-      state.camera.position.x = clampToBounds(targetX, BOUNDS.x.min, BOUNDS.x.max);
-      state.camera.position.y = clampToBounds(targetY, BOUNDS.y.min, BOUNDS.y.max);
-      state.camera.position.z = clampToBounds(targetZ, BOUNDS.z.min, BOUNDS.z.max);
-
-      state.camera.lookAt (0, 0, 0);
+      meshRef.current.position.z = zPositionRef.current;
     }
   });
 
   return (
     <Suspense fallback={null}>
       <Center top>
-        <group ref={meshRef}>
+        <group ref={meshRef} position={[0, 0, 8]}>
           <Text3D
             font={fontUrl}
-            size={size}
+            size={responsiveSize}
             height={depth}
             curveSegments={8}
             bevelEnabled
@@ -103,9 +89,9 @@ const VolumetricTextCore = React.memo(({
 VolumetricTextCore.displayName = "VolumetricTextCore";
 
 /**
- * Scene — Cena 3D completa com lighting, ambiente e câmera restrita
+ * Scene — Cena 3D completa com lighting, ambiente e câmera responsiva
  */
-function VolumetricScene({ text, fontUrl, textColor }) {
+function VolumetricScene({ text, fontUrl, textColor, isMobile }) {
   const { gl } = useThree();
 
   // Configurar output color space para linear (PBR)
@@ -115,9 +101,12 @@ function VolumetricScene({ text, fontUrl, textColor }) {
     }
   }, [gl]);
 
+  // FOV responsivo: maior no mobile para enquadrar melhor
+  const responsiveFOV = isMobile ? 25 : 15;
+
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 16]} fov={120} />
+      <PerspectiveCamera makeDefault position={[0, 0, 16]} fov={responsiveFOV} />
 
       {/* Lighting Setup */}
       <ambientLight intensity={0.4} />
@@ -143,6 +132,7 @@ function VolumetricScene({ text, fontUrl, textColor }) {
         depth={0.3}
         roughness={0.35}
         metalness={0.75}
+        isMobile={isMobile}
       />
     </>
   );
@@ -150,7 +140,8 @@ function VolumetricScene({ text, fontUrl, textColor }) {
 
 /**
  * VolumetricTextHero — Wrapper para Canvas com controle externo
- * Câmera restrita aos bounds do container
+ * Texto centralizado oscilando suavemente no eixo Z
+ * Responsivo: 90% da largura no mobile
  * Props:
  *  - text: string a renderizar
  *  - fontUrl: caminho para arquivo .json (Three.js TextGeometry)
@@ -163,26 +154,53 @@ export default function VolumetricTextHero({
   textColor = "#00FFFF",
   height = "400px"
 }) {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    // Detecta se é mobile (viewport < 768px)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="w-full h-full overflow-hidden" style={{ height }}>
-      <Canvas
-        gl={{ 
-          antialias: true,
-          alpha: true,
-          dpr: [1, 2],
-          shadowMap: { enabled: true }
+    <div 
+      className="flex items-center justify-center w-full md:w-full"
+      style={{ 
+        height,
+        maxWidth: "100%"
+      }}
+    >
+      <div 
+        className="w-11/12 md:w-full overflow-hidden rounded-lg" 
+        style={{ 
+          height: "100%"
         }}
-        style={{ width: "100%", height: "100%" }}
-        className="rounded-lg"
       >
-        <Suspense fallback={null}>
-          <VolumetricScene 
-            text={text}
-            fontUrl={fontUrl}
-            textColor={textColor}
-          />
-        </Suspense>
-      </Canvas>
+        <Canvas
+          gl={{ 
+            antialias: true,
+            alpha: true,
+            dpr: [1, 2],
+            shadowMap: { enabled: true }
+          }}
+          style={{ width: "100%", height: "100%" }}
+          className="rounded-lg"
+        >
+          <Suspense fallback={null}>
+            <VolumetricScene 
+              text={text}
+              fontUrl={fontUrl}
+              textColor={textColor}
+              isMobile={isMobile}
+            />
+          </Suspense>
+        </Canvas>
+      </div>
     </div>
   );
 }
