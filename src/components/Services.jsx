@@ -104,10 +104,10 @@ export default function Services() {
       id="servicos"
       className="
         w-full  pt-20  px-4
-        bg-[url('/imagens/para_port5.png')] bg-cover bg-center bg-no-repeat bg-opacity-50
+        bg-[url('/imagens/para_port5.png')] bg-cover bg-center bg-no-repeat bg-opacity-25
 
         [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
-        [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
+        [-webkit-mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]
 
         dark:text-rose-200
         rounded-md mb-8

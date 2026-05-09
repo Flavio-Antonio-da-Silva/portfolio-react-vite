@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
+import MinhaImagem from "./components/MinhaImagem";
 import AboutMe from "./components/AboutMe";
 import Services from "./components/Services";
 import RedesSociais from "./components/RedesSociais";
@@ -57,7 +58,7 @@ function App() {
           <div className="w-full md:w-full  max-w-full  ml-0 mr-0 mb-0 mt-4 font-alfa flex items-center justify-center overflow-hidden rounded-xl shadow-lg ">
            
           </div>
-          
+          <MinhaImagem />
           <AboutMe />
           <Services />
           <Projects />

@@ -80,7 +80,7 @@ export default function AboutMe() {
     <section
       id="sobre-mim"
       className="
-        w-full pb-0 md:pb-40 pt-0 mb-0 rounded-md
+        w-full pb-16 md:pb-30 lg:pb-180 pt-0 mb-0 rounded-md
         bg-[url('/imagens/foto_perfil_pot.png')]
         bg-contain bg-right bg-no-repeat
       

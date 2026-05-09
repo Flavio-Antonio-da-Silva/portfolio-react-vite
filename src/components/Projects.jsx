@@ -61,6 +61,42 @@ const projectsData = [
     link: "https://mkodonto.vercel.app/",
     tags: ["React", "Tailwind"],
   },
+  {
+    id: "clinica-especial-1",
+    title: "Clínica Dentária Especializada",
+    description: "Plataforma digital para agendamentos e informações de procedimentos odontológicos.",
+    emoji: "🦷",
+    image: "/imagens/case1.jpeg",
+    link: "https://clinica1-especial.vercel.app/",
+    tags: ["React", "GSAP", "Tailwind"],
+  },
+  {
+    id: "clinica-especial-2",
+    title: "Centro Odontológico Premium",
+    description: "Site de alta conversão para captação de pacientes em serviços odontológicos.",
+    emoji: "✨",
+    image: "/imagens/case2.jpg",
+    link: "https://clinica-2-especial.vercel.app/",
+    tags: ["React", "Tailwind"],
+  },
+  {
+    id: "clinica-especial-3",
+    title: "Consultório Odontológico Moderno",
+    description: "Plataforma completa com agendamento online e portfólio de casos clínicos.",
+    emoji: "🩺",
+    image: "/imagens/case3.png",
+    link: "https://clinica-3-especial.vercel.app/",
+    tags: ["TypeScript", "Tailwind"],
+  },
+  {
+    id: "consultorio-mocha",
+    title: "Consultório Dentário Premium",
+    description: "Espaço digital para apresentação de serviços estéticos e preventivos em odontologia.",
+    emoji: "😁",
+    image: "/imagens/case8.png",
+    link: "https://consultorio-mocha.vercel.app/",
+    tags: ["React", "GSAP"],
+  },
 ];
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -158,7 +194,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full py-20 md:pb-0 px-4 flex flex-col items-center text-center gap-12"
+      className="w-full py-20 md:pb-8 lg:pb-12 px-4 flex flex-col items-center text-center gap-12"
     >
       {/* Hero 3D Text */}
       <div className="w-full  ">
